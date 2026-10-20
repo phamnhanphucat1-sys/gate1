@@ -1,0 +1,1 @@
+{"name":"school-gate-live","private":true,"type":"module","scripts":{"dev":"wrangler dev","deploy":"wrangler deploy","check":"node --check worker.mjs"},"devDependencies":{"wrangler":"^4.0.0"}}
