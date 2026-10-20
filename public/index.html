@@ -8,7 +8,7 @@
   <style>
     :root {
       --bg: #f4f6fb;
-      --card: #fff;
+      --card: #ffffff;
       --text: #182640;
       --muted: #7c879c;
       --border: #e5eaf3;
@@ -21,16 +21,20 @@
 
     body {
       margin: 0;
-      font: 14px/1.6 "Segoe UI", system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
+      font: 14px/1.6 "Segoe UI", system-ui, sans-serif;
     }
 
     button, input, select, textarea { font: inherit; }
 
+    button, input, select, textarea, a {
+      outline-offset: 4px;
+    }
+
     button {
       padding: 10px 15px;
-      border: none;
+      border: 0;
       border-radius: 10px;
       background: var(--primary);
       color: white;
@@ -39,15 +43,15 @@
     }
 
     button:hover { filter: brightness(.95); }
-    button:disabled { opacity: .5; cursor: wait; }
+    button:disabled { opacity: .45; cursor: default; }
 
     input, select, textarea {
+      max-width: 100%;
       padding: 10px 12px;
       border: 1px solid var(--border);
       border-radius: 9px;
       background: var(--card);
       color: var(--text);
-      max-width: 100%;
     }
 
     textarea { resize: vertical; }
@@ -68,7 +72,7 @@
     }
 
     .topbar {
-      max-width: 1320px;
+      max-width: 1700px;
       margin: auto;
       padding: 18px 24px;
       display: flex;
@@ -81,7 +85,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 22px;
+      font-size: 23px;
       font-weight: 750;
       letter-spacing: -.8px;
     }
@@ -89,8 +93,8 @@
     .logo {
       display: grid;
       place-items: center;
-      width: 39px;
-      height: 39px;
+      width: 40px;
+      height: 40px;
       border-radius: 12px;
       background: var(--primary);
       color: white;
@@ -103,11 +107,17 @@
       gap: 10px;
     }
 
-    main {
-      max-width: 1320px;
+    .workspace {
+      display: grid;
+      grid-template-columns: 290px minmax(0, 1fr);
+      align-items: start;
+      gap: 24px;
+      max-width: 1700px;
       margin: auto;
-      padding: 30px 24px;
+      padding: 28px 24px;
     }
+
+    main { min-width: 0; }
 
     .eyebrow {
       color: var(--primary);
@@ -119,22 +129,21 @@
     h1 {
       margin: 8px 0;
       font-size: 32px;
-      letter-spacing: -1px;
       line-height: 1.3;
+      letter-spacing: -1px;
     }
 
     h2 { margin: 0 0 15px; font-size: 18px; }
     p { margin: 8px 0; }
     .muted { color: var(--muted); }
-
     .intro { margin-bottom: 25px; }
 
     .panel {
       margin-bottom: 22px;
       padding: 22px;
-      background: var(--card);
       border: 1px solid var(--border);
       border-radius: 16px;
+      background: var(--card);
     }
 
     .stats {
@@ -145,10 +154,10 @@
     }
 
     .stat {
-      background: var(--card);
+      padding: 20px;
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 20px;
+      background: var(--card);
     }
 
     .stat span { color: var(--muted); font-size: 12px; }
@@ -156,35 +165,35 @@
 
     .filters input[type="search"] {
       flex: 1;
-      min-width: 190px;
+      min-width: 170px;
     }
 
     .connection {
       margin-left: auto;
-      color: #218968;
-      background: #eaf7ef;
       padding: 5px 11px;
       border-radius: 20px;
+      background: #eaf7ef;
+      color: #218968;
       font-size: 12px;
     }
 
     .day-list {
       display: flex;
-      gap: 8px;
       flex-wrap: wrap;
+      gap: 8px;
     }
 
     .day-list button {
+      border: 1px solid var(--border);
       background: var(--bg);
       color: var(--muted);
-      border: 1px solid var(--border);
       font-size: 12px;
     }
 
     .day-list button.active {
+      border-color: #c6ceff;
       background: var(--soft);
       color: var(--primary);
-      border-color: #c6ceff;
     }
 
     .table-wrap { overflow-x: auto; }
@@ -196,9 +205,9 @@
     }
 
     th, td {
-      text-align: left;
       padding: 14px 12px;
       border-bottom: 1px solid var(--border);
+      text-align: left;
       vertical-align: middle;
     }
 
@@ -213,14 +222,18 @@
     td { font-size: 13px; }
 
     .photo {
+      display: block;
       width: 112px;
       height: 75px;
-      object-fit: cover;
       border-radius: 10px;
-      display: block;
+      object-fit: cover;
     }
 
-    .photo-button { padding: 0; background: transparent; }
+    .photo-button {
+      padding: 0;
+      background: transparent;
+      cursor: zoom-in;
+    }
 
     .status {
       display: inline-block;
@@ -236,12 +249,12 @@
 
     .actions {
       display: flex;
-      gap: 6px;
       flex-wrap: wrap;
+      gap: 6px;
       min-width: 180px;
     }
 
-    .actions button { font-size: 11px; padding: 7px 10px; }
+    .actions button { padding: 7px 10px; font-size: 11px; }
 
     .admin-banner {
       display: flex;
@@ -260,9 +273,9 @@
       width: min(560px, 94vw);
       max-height: 90vh;
       overflow: auto;
+      padding: 25px;
       border: 1px solid var(--border);
       border-radius: 18px;
-      padding: 25px;
       background: var(--card);
       color: var(--text);
     }
@@ -274,27 +287,121 @@
 
     .dialog-head {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 15px;
       margin-bottom: 15px;
     }
 
     .dialog-head h2 { margin: 0; }
-
     .form-grid { display: grid; gap: 14px; }
 
     .form-grid label {
       display: grid;
       gap: 6px;
-      font-size: 12px;
       color: var(--muted);
+      font-size: 12px;
     }
 
     #imageDialog { width: auto; max-width: 95vw; }
-    #largeImage { max-width: 85vw; max-height: 72vh; display: block; }
 
-    footer { margin-top: 20px; color: var(--muted); font-size: 11px; }
+    #largeImage {
+      display: block;
+      max-width: 85vw;
+      max-height: 72vh;
+    }
+
+    footer {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* Bảng vẽ */
+    .draw-panel {
+      position: sticky;
+      top: 20px;
+      padding: 18px;
+    }
+
+    .draw-panel h2 { margin-bottom: 4px; }
+
+    .draw-caption {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .draw-tools, .draw-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .draw-tools { margin-bottom: 14px; }
+
+    .draw-panel button {
+      padding: 8px 10px;
+      font-size: 12px;
+    }
+
+    .draw-tools button[aria-pressed="true"] {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .draw-options {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .draw-options label {
+      display: grid;
+      gap: 5px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    #drawColor {
+      width: 44px;
+      height: 34px;
+      padding: 3px;
+      cursor: pointer;
+    }
+
+    #drawSize {
+      width: 130px;
+      padding: 0;
+      accent-color: var(--primary);
+    }
+
+    .canvas-wrap {
+      max-width: 300px;
+      margin: auto;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: white;
+    }
+
+    #drawCanvas {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background: white;
+      cursor: crosshair;
+      touch-action: none;
+    }
+
+    .draw-footer { margin-top: 14px; }
+
+    .draw-help, #drawNotice {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
 
     body.dark {
       --bg: #101625;
@@ -305,12 +412,38 @@
       --soft: #283353;
     }
 
+    @media (max-width: 1100px) {
+      .workspace {
+        grid-template-columns: 250px minmax(0, 1fr);
+        gap: 16px;
+        padding: 24px 16px;
+      }
+
+      #drawSize { width: 105px; }
+      .draw-panel { padding: 14px; }
+    }
+
+    @media (max-width: 850px) {
+      .workspace {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 14px;
+      }
+
+      .draw-panel {
+        position: static;
+        width: 100%;
+        margin-bottom: 0;
+      }
+
+      main { width: 100%; }
+    }
+
     @media (max-width: 650px) {
-      .topbar { padding: 14px; }
-      .brand { font-size: 19px; }
+      .topbar { padding: 14px; flex-wrap: wrap; }
+      .brand { font-size: 20px; }
       .top-actions { gap: 6px; }
       .top-actions button { padding: 8px 10px; font-size: 11px; }
-      main { padding: 24px 14px; }
       h1 { font-size: 26px; }
       .panel { padding: 16px; }
       .stats { gap: 8px; }
@@ -331,116 +464,178 @@
       </div>
 
       <div class="top-actions">
-        <button id="themeButton" class="secondary">◐ Sáng / tối</button>
-        <button id="loginOpen">Đăng nhập admin</button>
-        <button id="adminOpen" hidden>Trang admin</button>
-        <button id="logoutButton" class="secondary" hidden>Đăng xuất</button>
+        <button id="themeButton" class="secondary" type="button">
+          ◐ Sáng / tối
+        </button>
+        <button id="loginOpen" type="button">Đăng nhập admin</button>
+        <button id="adminOpen" type="button" hidden>Trang admin</button>
+        <button id="logoutButton" class="secondary" type="button" hidden>
+          Đăng xuất
+        </button>
       </div>
     </div>
   </header>
 
-  <main>
-    <div class="intro">
-      <div class="eyebrow">AN TOÀN HỌC ĐƯỜNG</div>
-      <h1 id="pageTitle">Nhật ký cổng trường</h1>
-      <p id="pageDescription" class="muted">
-        Xem các sự kiện đã ghi nhận, ảnh minh chứng và kết quả xác nhận.
-      </p>
-    </div>
+  <div class="workspace">
+    <aside class="panel draw-panel" aria-label="Bảng vẽ tự do">
+      <h2>✎ Góc sáng tạo</h2>
+      <p class="draw-caption">Một khoảng nhỏ cho ý tưởng của bạn.</p>
 
-    <section id="adminBanner" class="panel admin-banner" hidden>
-      <div>
-        <strong>Không gian quản trị</strong>
-        <div class="muted">Thêm, chỉnh sửa và xác nhận các sự kiện.</div>
-      </div>
-      <div class="row">
-        <button id="addButton">＋ Thêm sự kiện</button>
-        <button id="publicOpen" class="secondary">Về trang xem</button>
-      </div>
-    </section>
+      <div class="draw-tools">
+        <button id="drawPen" class="secondary"
+          type="button" aria-pressed="true">Bút vẽ</button>
 
-    <section class="panel">
-      <div class="filters">
+        <button id="drawEraser" class="secondary"
+          type="button" aria-pressed="false">Tẩy</button>
+
+        <button id="drawUndo" class="secondary"
+          type="button" disabled>Hoàn tác</button>
+      </div>
+
+      <div class="draw-options">
         <label>
-          Ngày
-          <input id="day" type="date">
+          Màu bút
+          <input id="drawColor" type="color" value="#5468ef">
         </label>
 
-        <button id="todayButton" class="secondary">Hôm nay</button>
-        <button id="allButton" class="secondary">Tất cả</button>
-
-        <input
-          id="search"
-          type="search"
-          placeholder="Tìm sự kiện hoặc ghi chú…"
-          aria-label="Tìm sự kiện"
-        >
-
-        <select id="statusFilter" aria-label="Trạng thái">
-          <option value="">Tất cả trạng thái</option>
-          <option value="Cho kiem tra">Chờ kiểm tra</option>
-          <option value="Da xac nhan">Đã xác nhận</option>
-          <option value="Nhan nham">Nhận nhầm</option>
-        </select>
-
-        <button id="exportButton" class="secondary" hidden>Xuất CSV</button>
-        <span id="connection" class="connection" role="status">Đang kết nối…</span>
+        <label>
+          <span>Độ dày: <span id="drawSizeValue">4 px</span></span>
+          <input id="drawSize" type="range" min="1" max="36" value="4">
+        </label>
       </div>
-    </section>
 
-    <div class="stats">
-      <article class="stat">
-        <span>Sự kiện trong phạm vi ngày</span>
-        <strong id="total">0</strong>
-      </article>
+      <div class="canvas-wrap">
+        <canvas id="drawCanvas" width="900" height="1200"
+          aria-label="Bảng vẽ bằng chuột hoặc cảm ứng"></canvas>
+      </div>
 
-      <article class="stat">
-        <span>Chờ kiểm tra</span>
-        <strong id="pending">0</strong>
-      </article>
+      <div class="draw-footer">
+        <button id="drawDownload" type="button">↓ Tải PNG</button>
+        <button id="drawClear" class="danger" type="button">Xóa hết</button>
+      </div>
 
-      <article class="stat">
-        <span>Đã xác nhận</span>
-        <strong id="confirmed">0</strong>
-      </article>
-    </div>
+      <p id="drawNotice" role="status">Sẵn sàng vẽ.</p>
 
-    <section class="panel">
-      <h2>Lịch sử theo ngày</h2>
-      <div id="days" class="day-list"></div>
-    </section>
-
-    <section class="panel">
-      <h2>Danh sách sự kiện</h2>
-      <p class="muted">
-        Cập nhật mỗi 2 giây. “Nghi không đội mũ” là phát hiện cần kiểm tra,
-        chưa phải kết luận vi phạm.
+      <p class="draw-help">
+        Ai cũng có thể vẽ. Tranh chỉ nằm trên thiết bị này,
+        không gửi lên máy chủ. Tải PNG để giữ tranh trước khi tải lại trang.
       </p>
+    </aside>
 
-      <p id="message" class="message" role="alert"></p>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Ảnh</th>
-              <th>Thời gian Việt Nam</th>
-              <th>Sự kiện</th>
-              <th>Ghi chú</th>
-              <th>Trạng thái</th>
-              <th id="actionsHeading" hidden>Quản lý</th>
-            </tr>
-          </thead>
-          <tbody id="events"></tbody>
-        </table>
+    <main>
+      <div class="intro">
+        <div class="eyebrow">AN TOÀN HỌC ĐƯỜNG</div>
+        <h1 id="pageTitle">Nhật ký cổng trường</h1>
+        <p id="pageDescription" class="muted">
+          Xem các sự kiện đã ghi nhận, ảnh minh chứng và kết quả xác nhận.
+        </p>
       </div>
-    </section>
 
-    <footer>
-      Tối đa 2.000 sự kiện gần nhất trong phạm vi ngày đã chọn.
-      Ảnh và lịch sử trên trang này được phép xem công khai.
-    </footer>
-  </main>
+      <section id="adminBanner" class="panel admin-banner" hidden>
+        <div>
+          <strong>Không gian quản trị</strong>
+          <div class="muted">Thêm, chỉnh sửa và xác nhận các sự kiện.</div>
+        </div>
+
+        <div class="row">
+          <button id="addButton" type="button">＋ Thêm sự kiện</button>
+          <button id="publicOpen" class="secondary" type="button">
+            Về trang xem
+          </button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="filters">
+          <label>
+            Ngày
+            <input id="day" type="date">
+          </label>
+
+          <button id="todayButton" class="secondary" type="button">
+            Hôm nay
+          </button>
+
+          <button id="allButton" class="secondary" type="button">
+            Tất cả
+          </button>
+
+          <input id="search" type="search"
+            placeholder="Tìm sự kiện hoặc ghi chú…"
+            aria-label="Tìm sự kiện">
+
+          <select id="statusFilter" aria-label="Trạng thái">
+            <option value="">Tất cả trạng thái</option>
+            <option value="Cho kiem tra">Chờ kiểm tra</option>
+            <option value="Da xac nhan">Đã xác nhận</option>
+            <option value="Nhan nham">Nhận nhầm</option>
+          </select>
+
+          <button id="exportButton" class="secondary" type="button" hidden>
+            Xuất CSV
+          </button>
+
+          <span id="connection" class="connection" role="status">
+            Đang kết nối…
+          </span>
+        </div>
+      </section>
+
+      <div class="stats">
+        <article class="stat">
+          <span>Sự kiện trong phạm vi ngày</span>
+          <strong id="total">0</strong>
+        </article>
+
+        <article class="stat">
+          <span>Chờ kiểm tra</span>
+          <strong id="pending">0</strong>
+        </article>
+
+        <article class="stat">
+          <span>Đã xác nhận</span>
+          <strong id="confirmed">0</strong>
+        </article>
+      </div>
+
+      <section class="panel">
+        <h2>Lịch sử theo ngày</h2>
+        <div id="days" class="day-list"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Danh sách sự kiện</h2>
+
+        <p class="muted">
+          Cập nhật mỗi 2 giây. “Nghi không đội mũ” là phát hiện
+          cần kiểm tra, chưa phải kết luận vi phạm.
+        </p>
+
+        <p id="message" class="message" role="alert"></p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Ảnh</th>
+                <th>Thời gian Việt Nam</th>
+                <th>Sự kiện</th>
+                <th>Ghi chú</th>
+                <th>Trạng thái</th>
+                <th id="actionsHeading" hidden>Quản lý</th>
+              </tr>
+            </thead>
+            <tbody id="events"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer>
+        Tối đa 2.000 sự kiện gần nhất trong phạm vi ngày đã chọn.
+        Ảnh và lịch sử trên trang này được phép xem công khai.
+      </footer>
+    </main>
+  </div>
 
   <dialog id="loginDialog">
     <div class="dialog-head">
@@ -507,10 +702,14 @@
 
   <dialog id="imageDialog">
     <img id="largeImage" alt="Ảnh minh chứng sự kiện">
-    <button id="imageClose" type="button" style="margin-top:12px">Đóng ảnh</button>
+    <button id="imageClose" type="button" style="margin-top:12px">
+      Đóng ảnh
+    </button>
   </dialog>
 
   <script>
+    // ================= NHAT KY VA ADMIN =================
+
     const $ = id => document.getElementById(id);
 
     const labels = {
@@ -528,7 +727,8 @@
     let sessionVersion = 0;
 
     function todayVN() {
-      return new Date(Date.now() + 7 * 3600000).toISOString().slice(0, 10);
+      return new Date(Date.now() + 7 * 3600000)
+        .toISOString().slice(0, 10);
     }
 
     function timeInputVN(time) {
@@ -637,10 +837,10 @@
 
       $("total").textContent = records.length;
       $("pending").textContent = records.filter(
-        r => r.status === "Cho kiem tra"
+        record => record.status === "Cho kiem tra"
       ).length;
       $("confirmed").textContent = records.filter(
-        r => r.status === "Da xac nhan"
+        record => record.status === "Da xac nhan"
       ).length;
 
       $("events").replaceChildren();
@@ -695,13 +895,16 @@
           const actions = document.createElement("div");
           actions.className = "actions";
 
-          actions.append(action("Sửa", "secondary", () => openEditor(record)));
+          actions.append(
+            action("Sửa", "secondary", () => openEditor(record))
+          );
 
           if (record.status === "Cho kiem tra") {
             actions.append(
               action("Xác nhận", "secondary", () =>
                 changeStatus(record, "Da xac nhan"))
             );
+
             actions.append(
               action("Nhận nhầm", "secondary", () =>
                 changeStatus(record, "Nhan nham"))
@@ -742,7 +945,10 @@
           refresh();
         });
 
-        if (item.day === $("day").value) button.classList.add("active");
+        if (item.day === $("day").value) {
+          button.classList.add("active");
+        }
+
         $("days").append(button);
       }
     }
@@ -750,6 +956,7 @@
     async function refresh() {
       if (busy) return;
       busy = true;
+
       const selectedDay = $("day").value;
 
       try {
@@ -788,10 +995,12 @@
 
       try {
         const result = await json("/api/me");
+
         if (version !== sessionVersion) return;
 
         isAdmin = result.admin === true;
         if (!isAdmin) adminView = false;
+
         updateAdminUI();
       } catch (_) {
         if (version === sessionVersion && isAdmin) loseSession();
@@ -802,15 +1011,14 @@
       if (!isAdmin || !adminView) return;
 
       editingId = record ? record.id : null;
+
       $("eventForm").reset();
       $("formMessage").textContent = "";
-
       $("editTitle").textContent = record ? "Sửa sự kiện" : "Thêm sự kiện";
       $("eventTime").value = record ? timeInputVN(record.time) : "";
       $("eventKind").value = record ? record.kind : "Nghi không đội mũ";
       $("eventNote").value = record ? record.note : "";
       $("eventStatus").value = record ? record.status : "Cho kiem tra";
-
       $("photoField").hidden = !!record;
       $("editPhotoNote").hidden = !record;
 
@@ -829,6 +1037,7 @@
 
     $("loginForm").onsubmit = async event => {
       event.preventDefault();
+
       $("loginSubmit").disabled = true;
       $("loginError").textContent = "";
 
@@ -854,6 +1063,9 @@
     $("logoutButton").onclick = async () => {
       $("logoutButton").disabled = true;
 
+      // Ngăn kiểm tra phiên cũ bật lại admin sau khi đăng xuất.
+      sessionVersion++;
+
       try {
         await json("/api/logout", {});
         loseSession();
@@ -867,10 +1079,12 @@
 
     $("adminOpen").onclick = async () => {
       await checkSession();
+
       if (!isAdmin) {
         $("loginDialog").showModal();
         return;
       }
+
       adminView = true;
       updateAdminUI();
     };
@@ -884,6 +1098,7 @@
 
     $("eventForm").onsubmit = async event => {
       event.preventDefault();
+
       if (!isAdmin || !adminView) return;
 
       $("saveButton").disabled = true;
@@ -891,8 +1106,11 @@
 
       try {
         const enteredTime = $("eventTime").value;
+
         const time = enteredTime
-          ? enteredTime + (enteredTime.length === 16 ? ":00+07:00" : "+07:00")
+          ? enteredTime + (
+              enteredTime.length === 16 ? ":00+07:00" : "+07:00"
+            )
           : undefined;
 
         const payload = {
@@ -909,16 +1127,23 @@
           const file = $("eventPhoto").files[0];
 
           if (file) {
-            if (file.size > 2000000) throw new Error("Ảnh tối đa 2 MB.");
+            if (file.size > 2000000) {
+              throw new Error("Ảnh tối đa 2 MB.");
+            }
+
             if (file.type && file.type !== "image/jpeg") {
               throw new Error("Vui lòng chọn ảnh JPEG.");
             }
 
             payload.image = await new Promise((resolve, reject) => {
               const reader = new FileReader();
+
               reader.onload = () =>
                 resolve(String(reader.result).split(",")[1]);
-              reader.onerror = () => reject(new Error("Không đọc được ảnh."));
+
+              reader.onerror = () =>
+                reject(new Error("Không đọc được ảnh."));
+
               reader.readAsDataURL(file);
             });
           }
@@ -963,17 +1188,19 @@
         const response = await api(
           "/api/export?day=" + encodeURIComponent($("day").value)
         );
+
         const blob = await response.blob();
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
 
         link.href = url;
         link.download = "su-kien-" + ($("day").value || "tat-ca") + ".csv";
+
         document.body.append(link);
         link.click();
         link.remove();
 
-        setTimeout(() => URL.revokeObjectURL(url), 1000);
+        setTimeout(() => URL.revokeObjectURL(url), 2000);
       } catch (error) {
         $("message").textContent = error.message;
       }
@@ -987,6 +1214,7 @@
 
     $("themeButton").onclick = () => {
       document.body.classList.toggle("dark");
+
       try {
         localStorage.setItem(
           "gate-theme",
@@ -1013,6 +1241,250 @@
         checkSession();
       }
     });
+  </script>
+
+  <script>
+    // ================= BANG VE TU DO =================
+
+    (() => {
+      const get = id => document.getElementById(id);
+      const canvas = get("drawCanvas");
+      const context = canvas.getContext("2d");
+
+      if (!context) {
+        get("drawNotice").textContent =
+          "Trình duyệt chưa hỗ trợ bảng vẽ.";
+        return;
+      }
+
+      const width = canvas.width;
+      const height = canvas.height;
+
+      let strokes = [];
+      let currentStroke = null;
+      let activePointer = null;
+      let eraserEnabled = false;
+
+      function notice(text) {
+        get("drawNotice").textContent = text;
+      }
+
+      function paintStroke(stroke) {
+        if (!stroke.points.length) return;
+
+        context.save();
+
+        context.globalCompositeOperation = stroke.erase
+          ? "destination-out"
+          : "source-over";
+
+        context.strokeStyle = stroke.color;
+        context.fillStyle = stroke.color;
+        context.lineWidth = stroke.width;
+        context.lineCap = "round";
+        context.lineJoin = "round";
+
+        const first = stroke.points[0];
+
+        if (stroke.points.length === 1) {
+          context.beginPath();
+          context.arc(
+            first.x, first.y,
+            stroke.width / 2,
+            0, Math.PI * 2
+          );
+          context.fill();
+        } else {
+          context.beginPath();
+          context.moveTo(first.x, first.y);
+
+          for (let i = 1; i < stroke.points.length; i++) {
+            const point = stroke.points[i];
+            context.lineTo(point.x, point.y);
+          }
+
+          context.stroke();
+        }
+
+        context.restore();
+      }
+
+      function redraw() {
+        context.clearRect(0, 0, width, height);
+
+        for (const stroke of strokes) paintStroke(stroke);
+
+        if (currentStroke) paintStroke(currentStroke);
+
+        get("drawUndo").disabled =
+          strokes.length === 0 && !currentStroke;
+      }
+
+      function getPoint(event) {
+        const rect = canvas.getBoundingClientRect();
+
+        return {
+          x: Math.max(0, Math.min(
+            width,
+            (event.clientX - rect.left) * width / rect.width
+          )),
+          y: Math.max(0, Math.min(
+            height,
+            (event.clientY - rect.top) * height / rect.height
+          ))
+        };
+      }
+
+      function finishStroke() {
+        if (!currentStroke) return;
+
+        strokes.push(currentStroke);
+        currentStroke = null;
+
+        const oldPointer = activePointer;
+        activePointer = null;
+
+        if (
+          oldPointer !== null &&
+          canvas.hasPointerCapture(oldPointer)
+        ) {
+          canvas.releasePointerCapture(oldPointer);
+        }
+
+        redraw();
+        notice("Đã vẽ " + strokes.length + " nét.");
+      }
+
+      canvas.addEventListener("pointerdown", event => {
+        if (activePointer !== null || event.button !== 0) return;
+
+        event.preventDefault();
+
+        activePointer = event.pointerId;
+        canvas.setPointerCapture(activePointer);
+
+        const displayWidth = canvas.getBoundingClientRect().width;
+
+        currentStroke = {
+          color: get("drawColor").value,
+          erase: eraserEnabled,
+          width: Number(get("drawSize").value) * width / displayWidth,
+          points: [getPoint(event)]
+        };
+
+        redraw();
+      });
+
+      canvas.addEventListener("pointermove", event => {
+        if (
+          event.pointerId !== activePointer ||
+          !currentStroke
+        ) {
+          return;
+        }
+
+        event.preventDefault();
+
+        const samples = event.getCoalescedEvents
+          ? event.getCoalescedEvents()
+          : [];
+
+        for (const sample of samples.length ? samples : [event]) {
+          currentStroke.points.push(getPoint(sample));
+        }
+
+        redraw();
+      });
+
+      canvas.addEventListener("pointerup", event => {
+        if (event.pointerId === activePointer) finishStroke();
+      });
+
+      canvas.addEventListener("pointercancel", event => {
+        if (event.pointerId === activePointer) finishStroke();
+      });
+
+      canvas.addEventListener("lostpointercapture", finishStroke);
+
+      function selectTool(erase) {
+        finishStroke();
+        eraserEnabled = erase;
+
+        get("drawPen").setAttribute("aria-pressed", String(!erase));
+        get("drawEraser").setAttribute("aria-pressed", String(erase));
+
+        notice(erase ? "Đang dùng tẩy." : "Đang dùng bút vẽ.");
+      }
+
+      get("drawPen").onclick = () => selectTool(false);
+      get("drawEraser").onclick = () => selectTool(true);
+      get("drawColor").oninput = () => selectTool(false);
+
+      get("drawSize").oninput = () => {
+        get("drawSizeValue").textContent =
+          get("drawSize").value + " px";
+      };
+
+      get("drawUndo").onclick = () => {
+        finishStroke();
+        strokes.pop();
+        redraw();
+        notice("Đã hoàn tác một nét.");
+      };
+
+      get("drawClear").onclick = () => {
+        finishStroke();
+
+        if (!strokes.length) return;
+        if (!confirm("Xóa toàn bộ tranh đang vẽ?")) return;
+
+        strokes = [];
+        redraw();
+        notice("Đã xóa bảng vẽ.");
+      };
+
+      get("drawDownload").onclick = () => {
+        finishStroke();
+
+        const output = document.createElement("canvas");
+        output.width = width;
+        output.height = height;
+
+        const out = output.getContext("2d");
+
+        if (!out) {
+          notice("Không xuất được ảnh.");
+          return;
+        }
+
+        // PNG xuất ra có nền trắng.
+        out.fillStyle = "#ffffff";
+        out.fillRect(0, 0, width, height);
+        out.drawImage(canvas, 0, 0);
+
+        output.toBlob(blob => {
+          if (!blob) {
+            notice("Không xuất được ảnh. Vui lòng thử lại.");
+            return;
+          }
+
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+
+          link.href = url;
+          link.download = "gateguard-tranh-" + Date.now() + ".png";
+
+          document.body.append(link);
+          link.click();
+          link.remove();
+
+          setTimeout(() => URL.revokeObjectURL(url), 2000);
+          notice("Đã tạo ảnh PNG để tải xuống.");
+        }, "image/png");
+      };
+
+      redraw();
+    })();
   </script>
 </body>
 </html>
