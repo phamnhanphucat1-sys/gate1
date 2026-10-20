@@ -1,21 +1,1301 @@
-<!doctype html><html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nhật ký cổng trường</title>
-<style>
-:root{--bg:#f5f7fb;--surface:#fff;--text:#17243d;--muted:#7a879b;--line:#e8edf4;--accent:#5368ef;--soft:#eef0ff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.6 Inter,"Segoe UI",system-ui,sans-serif}button,input,select{font:inherit}button,a,input,select{outline-offset:4px}button,.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:10px;background:var(--accent);color:white;text-decoration:none;padding:10px 17px;cursor:pointer;font-weight:600;transition:transform .15s,background .15s}button:hover,.button:hover{filter:brightness(.96);transform:translateY(-1px)}button:disabled{opacity:.5;cursor:wait}input,select{background:var(--surface);border:1px solid #dce3ef;border-radius:9px;padding:10px 12px;color:var(--text);max-width:100%}header{margin-left:232px;padding:34px 42px 20px;background:transparent;color:var(--text)}header>small{color:var(--accent)!important;font-size:11px;font-weight:700;letter-spacing:2px}h1{font-size:30px;letter-spacing:-1px;line-height:1.25;margin:10px 0}header p{color:var(--muted);margin:10px 0}main{margin-left:232px;padding:0 42px 30px;max-width:1700px}section{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:23px;margin-bottom:22px;box-shadow:0 4px 20px #192a4b03}h2{font-size:17px;letter-spacing:-.3px;margin:0 0 14px}small{color:var(--muted)}.sidebar{position:fixed;inset:0 auto 0 0;width:232px;background:#fff;border-right:1px solid var(--line);padding:32px 20px;display:flex;flex-direction:column;z-index:5}.brand{display:flex;align-items:center;gap:11px;font-size:21px;font-weight:750;letter-spacing:-.7px;margin-bottom:42px}.brand-icon{display:grid;place-items:center;width:39px;height:39px;border-radius:12px;background:var(--accent);color:white;font-size:23px}.nav-label{font-size:10px;letter-spacing:1.7px;color:var(--muted);padding:0 12px;margin-bottom:12px}.sidebar a{display:flex;align-items:center;gap:11px;padding:12px;border-radius:10px;text-decoration:none;color:#748099;margin-bottom:7px;font-weight:600}.sidebar a:first-of-type{color:var(--accent);background:var(--soft)}.sidebar .bottom{margin-top:auto;background:#f7f9fc;padding:15px;border-radius:12px;color:#78869b;font-size:12px}.sidebar .bottom strong{color:var(--text);display:block;margin-bottom:4px}.tools,form{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.tools label{display:flex;align-items:center;gap:10px;color:var(--muted)}#connection{margin-left:auto;font-size:12px;color:#219d7e;background:#eaf8f2;border-radius:20px;padding:6px 12px}#today,#all{background:var(--soft);color:var(--accent)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:0;background:transparent;border:0;box-shadow:none}.stats article{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px;position:relative;overflow:hidden}.stats article:after{content:'↗';position:absolute;right:22px;top:22px;font-size:20px;color:var(--accent);background:var(--soft);width:36px;height:36px;text-align:center;border-radius:10px}.stats article:nth-child(2):after{content:'◷';color:#d79b25;background:#fff6e4}.stats article:nth-child(3):after{content:'✓';color:#209c81;background:#eaf8f2}.stats small{font-size:12px}.stats strong{display:block;font-size:36px;letter-spacing:-1px;font-weight:650;line-height:1.6}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;min-width:820px}th{text-transform:uppercase;font-size:10px;letter-spacing:1px;color:#8b97a9;font-weight:650;background:#f8fafd}th,td{text-align:left;padding:16px 12px;border-bottom:1px solid var(--line)}td{font-size:12px}tbody tr:hover{background:#fafbff}td img{width:110px;height:72px;object-fit:cover;border-radius:10px;display:block}td select{font-size:11px;padding:8px;background:#f8fafd}td:nth-child(3){font-weight:650}.danger{background:#fff1f0;color:#cf6a63;font-size:11px;padding:7px 11px}.badge{font-size:10px;font-weight:650;padding:5px 9px;border-radius:6px;background:#edf8f3;color:#1b9a75;margin-right:7px}#days button{background:#f5f7fc;color:#6c7890;font-size:12px;border:1px solid var(--line);font-weight:500}#days button.active{color:var(--accent);border-color:#c7ceff;background:var(--soft)}#message{color:#b37530;font-size:12px}#message:empty{display:none}#logout{position:absolute;top:36px;right:42px;background:white;color:#748099;border:1px solid var(--line);font-size:12px}footer{color:var(--muted);font-size:11px;padding:0 3px}#add input{flex:1;min-width:130px}#add input[type=file]{font-size:11px}#login{max-width:600px;border-color:#cdd4ff;background:linear-gradient(120deg,#fff,#f3f4ff)}#login h2{color:var(--accent)}#loginerror{color:#c05050}section[id],header{scroll-margin-top:20px}.filterbar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.filterbar input{flex:1;min-width:170px}.filterbar select{min-width:170px}body.dark{--bg:#101623;--surface:#192234;--text:#e7edf7;--muted:#93a0b7;--line:#2a354a;--soft:#293153}body.dark .sidebar,body.dark #logout{background:var(--surface)}body.dark th,body.dark td select,body.dark #days button,body.dark .sidebar .bottom{background:#202b40}body.dark tbody tr:hover{background:#202b40}body.dark #login{background:var(--surface)}#theme{background:var(--soft);color:var(--accent);width:100%;margin-top:16px}#imageDialog{border:0;border-radius:15px;background:var(--surface);color:var(--text);max-width:94vw;padding:16px}#imageDialog::backdrop{background:#07152bcc;backdrop-filter:blur(5px)}#largeImage{display:block;max-width:85vw;max-height:75vh;object-fit:contain}#imageDialog button{margin-top:12px}
-@media(min-width:1450px){main,header{padding-left:60px;padding-right:60px}}@media(max-width:1050px){.sidebar{width:190px}main,header{margin-left:190px;padding-left:24px;padding-right:24px}h1{font-size:26px}#logout{right:24px}.stats article{padding:17px}.stats article:after{display:none}}@media(max-width:720px){.sidebar{position:static;width:100%;padding:14px 18px;border-bottom:1px solid var(--line);flex-direction:row;align-items:center;gap:10px}.brand{margin:0;font-size:18px}.brand-icon{width:32px;height:32px}.sidebar a,.nav-label,.sidebar .bottom{display:none}#theme{margin:0 0 0 auto;width:auto;font-size:12px}main,header{margin-left:0;padding-left:16px;padding-right:16px}header{padding-top:24px}h1{font-size:25px;max-width:290px}#logout{position:static;margin-bottom:16px!important}.stats{gap:8px}.stats article{padding:13px 10px;border-radius:12px}.stats small{font-size:10px}.stats strong{font-size:28px}section{padding:17px}.tools{gap:8px}.tools label{width:100%}#connection{margin:0}.button,button{padding:9px 12px}header p{font-size:12px}#add input{width:100%;flex:auto}}
-</style>
-<aside class="sidebar"><div class="brand"><span class="brand-icon">◈</span>GateGuard<span style="color:#5368ef">.</span></div><div class="nav-label">KHÔNG GIAN QUẢN LÝ</div><a href="#overview">▦ <span>Tổng quan</span></a><a href="#history">◷ <span>Lịch sử sự kiện</span></a><a href="#manual">⊕ <span>Thêm bản ghi</span></a><div class="bottom"><strong>Camera cổng trường</strong>Mọi phát hiện đều cần được xem lại và xác nhận.</div><button id="theme" type="button">◐ Đổi giao diện</button></aside><header id="overview"><small style="color:#8bd3ce">AN TOÀN HỌC ĐƯỜNG / BẢNG ĐIỀU KHIỂN</small><h1>Một góc nhìn. An toàn hơn.</h1><p>Theo dõi sự kiện, xem ảnh và quản lý lịch sử tại một nơi.</p></header><main><section id="login"><h2>Đăng nhập quản lý</h2><form id="loginform"><input id="password" type="password" placeholder="Mật khẩu quản lý" required autocomplete="current-password"><button>Đăng nhập</button></form><p id="loginerror" role="alert"></p></section><button id="logout" style="margin-bottom:16px">Đăng xuất</button>
-<section><div class="tools"><label>Chọn ngày <input type="date" id="day"></label><button id="today">Hôm nay</button><button id="all">Tất cả ngày</button><a class="button" id="export">Xuất CSV</a><span id="connection" role="status"></span></div></section>
-<section class="stats"><article><small>Sự kiện đang hiển thị</small><strong id="total">0</strong></article><article><small>Chờ kiểm tra</small><strong id="pending">0</strong></article><article><small>Đã xác nhận</small><strong id="confirmed">0</strong></article></section>
-<section><h2>Lịch sử theo ngày</h2><div id="days" class="tools"></div></section>
-<section id="history"><h2>Nhật ký sự kiện</h2><div class="filterbar"><input id="search" type="search" placeholder="Tìm loại sự kiện hoặc ghi chú…" aria-label="Tìm sự kiện"><select id="statusFilter" aria-label="Lọc trạng thái"><option value="">Tất cả trạng thái</option value="Cho kiem tra">Chờ kiểm tra</option><option value="Da xac nhan">Đã xác nhận</option><option value="Nhan nham">Nhận nhầm</option></select></div><p><span class="badge">Trực tiếp · cập nhật mỗi 2 giây</span> <small>“Nghi không đội mũ” cần được kiểm tra bằng ảnh.</small></p><p id="message" role="alert"></p><div class="scroll"><table><thead><tr><th>Ảnh</th><th>Thời gian (Việt Nam)</th><th>Sự kiện</th><th>Ghi chú</th><th>Trạng thái</th><th></th></tr></thead><tbody id="events"></tbody></table></div></section>
-<section id="manual"><h2>Thêm sự kiện thủ công</h2><form id="add"><input id="time" type="datetime-local" aria-label="Thời gian Việt Nam"><input id="kind" value="Nghi không đội mũ" required maxlength="100" aria-label="Loại sự kiện"><input id="note" placeholder="Ghi chú / vị trí camera" maxlength="1000"><input id="photo" type="file" accept="image/jpeg" aria-label="Ảnh JPEG"><button>Lưu sự kiện</button></form><p><small>Để trống thời gian để dùng giờ hiện tại. Ảnh JPEG tối đa 2 MB.</small></p></section>
-<footer>Dữ liệu lưu trên Cloudflare. Danh sách và CSV hiển thị tối đa 2.000 sự kiện gần nhất trong phạm vi ngày đã chọn.</footer></main><dialog id="imageDialog"><img id="largeImage" alt="Ảnh minh chứng sự kiện"><button id="closeImage">Đóng ảnh</button></dialog>
-<script>
-const $=id=>document.getElementById(id);let busy=false;let cachedRecords=[];
-function localDay(){let d=new Date();return new Date(d.getTime()+7*3600000).toISOString().slice(0,10)}$('day').value=localDay();
-async function request(url,body){const r=await fetch(url,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{});if(!r.ok){if(r.status===401)$('login').hidden=false;let e=await r.json();throw Error(e.error||'Không kết nối được')}return r.json()}
-function cell(row,value){let td=document.createElement('td');td.textContent=value;row.append(td);return td}
-async function refresh(){if(busy)return;busy=true;try{let day=$('day').value;let [records,days]=await Promise.all([request('/api/events?day='+day),request('/api/days')]);$('total').textContent=records.length;$('pending').textContent=records.filter(x=>x.status==='Cho kiem tra').length;$('confirmed').textContent=records.filter(x=>x.status==='Da xac nhan').length;$('export').href='/api/export?day='+day;cachedRecords=records;const query=$('search').value.trim().toLocaleLowerCase('vi');const selected=$('statusFilter').value;const visible=records.filter(r=>(!selected||r.status===selected)&&(!query||(r.kind+' '+r.note).toLocaleLowerCase('vi').includes(query)));$('events').replaceChildren();for(let r of visible){let tr=document.createElement('tr');let photo=cell(tr,r.image?'':'Không có ảnh');if(r.image){let a=document.createElement('a');a.href='/images/'+r.image;a.onclick=e=>{e.preventDefault();$('largeImage').src=a.href;$('imageDialog').showModal()};let im=document.createElement('img');im.src=a.href;im.alt='Ảnh sự kiện '+r.id;a.append(im);photo.append(a)}cell(tr,new Date(r.time).toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh'}));cell(tr,r.kind);cell(tr,r.note);let s=document.createElement('select');s.setAttribute('aria-label','Trạng thái sự kiện '+r.id);for(let [v,t] of [['Cho kiem tra','Chờ kiểm tra'],['Da xac nhan','Đã xác nhận'],['Nhan nham','Nhận nhầm']]){let o=new Option(t,v);s.add(o)}s.value=r.status;s.onchange=async()=>{try{await request('/api/status',{id:r.id,status:s.value});refresh()}catch(e){$('message').textContent=e.message}};cell(tr,'').append(s);let b=document.createElement('button');b.textContent='Xóa';b.className='danger';b.onclick=async()=>{if(confirm('Xóa bản ghi và ảnh này?'))try{await request('/api/delete',{id:r.id});refresh()}catch(e){$('message').textContent=e.message}};cell(tr,'').append(b);$('events').append(tr)}if(!visible.length){let tr=document.createElement('tr');let td=cell(tr,'Không có sự kiện phù hợp với bộ lọc hiện tại.');td.colSpan=6;$('events').append(tr)}$('days').replaceChildren();for(let d of days){let b=document.createElement('button');b.textContent=d.day+' · '+d.count;if(d.day===day)b.classList.add('active');b.onclick=()=>{$('day').value=d.day;refresh()};$('days').append(b)}if(!days.length)$('days').textContent='Chưa có dữ liệu.';$('connection').textContent='● Đã kết nối';$('login').hidden=true}catch(e){$('connection').textContent='Mất kết nối';$('message').textContent=e.message}finally{busy=false}}
-$('today').onclick=()=>{$('day').value=localDay();refresh()};$('all').onclick=()=>{$('day').value='';refresh()};$('day').onchange=refresh;
-$('add').onsubmit=async e=>{e.preventDefault();try{let image='';let f=$('photo').files[0];if(f){if(f.size>2000000)throw Error('Ảnh tối đa 2 MB');image=await new Promise((ok,fail)=>{let r=new FileReader();r.onload=()=>ok(r.result.split(',')[1]);r.onerror=fail;r.readAsDataURL(f)})}let time=$('time').value;await request('/api/events',{kind:$('kind').value,note:$('note').value,image,time:time?time+':00+07:00':undefined});$('message').textContent='Đã lưu sự kiện.';$('note').value='';$('photo').value='';refresh()}catch(e){$('message').textContent=e.message}};try{if(localStorage.getItem('gate-theme')==='dark')document.body.classList.add('dark')}catch(e){}$('theme').onclick=()=>{document.body.classList.toggle('dark');try{localStorage.setItem('gate-theme',document.body.classList.contains('dark')?'dark':'light')}catch(e){}};$('closeImage').onclick=()=>$('imageDialog').close();$('search').oninput=refresh;$('statusFilter').onchange=refresh;$('loginform').onsubmit=async e=>{e.preventDefault();try{await request('/api/login',{password:$('password').value});$('password').value='';$('loginerror').textContent='';refresh()}catch(e){$('loginerror').textContent=e.message}};$('logout').onclick=async()=>{await request('/api/logout',{});location.reload()};refresh();setInterval(refresh,2000);
-</script></html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GateGuard — Camera cổng trường</title>
+
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --text: #17243d;
+      --muted: #7a879b;
+      --line: #e5eaf2;
+      --accent: #5368ef;
+      --soft: #eef0ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.6 "Segoe UI", system-ui, sans-serif;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button,
+    a,
+    input,
+    select {
+      outline-offset: 4px;
+    }
+
+    button,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 10px;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    button:hover,
+    .button:hover {
+      filter: brightness(0.95);
+    }
+
+    button:disabled {
+      opacity: 0.55;
+      cursor: wait;
+    }
+
+    input,
+    select {
+      max-width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    .sidebar {
+      position: fixed;
+      inset: 0 auto 0 0;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      width: 230px;
+      padding: 30px 20px;
+      border-right: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 40px;
+      font-size: 23px;
+      font-weight: 750;
+      letter-spacing: -1px;
+    }
+
+    .brand-icon {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: white;
+    }
+
+    .nav-label {
+      margin: 0 10px 12px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+    }
+
+    .sidebar a {
+      display: block;
+      margin-bottom: 7px;
+      padding: 12px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background: var(--soft);
+      color: var(--accent);
+    }
+
+    .sidebar-note {
+      margin-top: auto;
+      padding: 15px;
+      border-radius: 12px;
+      background: var(--bg);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .sidebar-note strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--text);
+    }
+
+    #themeButton {
+      margin-top: 15px;
+      background: var(--soft);
+      color: var(--accent);
+    }
+
+    .layout {
+      max-width: 1800px;
+      margin-left: 230px;
+      padding: 32px 38px;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      margin: 9px 0;
+      font-size: 30px;
+      line-height: 1.3;
+      letter-spacing: -1px;
+    }
+
+    h2 {
+      margin: 0 0 15px;
+      font-size: 17px;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .panel {
+      margin-bottom: 22px;
+      padding: 23px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--surface);
+    }
+
+    #loginPanel {
+      max-width: 650px;
+      border-color: #cbd2ff;
+    }
+
+    .toolbar,
+    .form-row,
+    .filters,
+    .day-list {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .toolbar label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+    }
+
+    .secondary {
+      background: var(--soft);
+      color: var(--accent);
+    }
+
+    #connection {
+      margin-left: auto;
+      padding: 5px 12px;
+      border-radius: 20px;
+      background: #edf7f2;
+      color: #218c6d;
+      font-size: 12px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .stat {
+      position: relative;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--surface);
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .stat-value {
+      display: block;
+      margin-top: 8px;
+      font-size: 36px;
+      font-weight: 650;
+      line-height: 1.3;
+    }
+
+    .stat-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--soft);
+      color: var(--accent);
+      font-size: 20px;
+    }
+
+    .stat:nth-child(2) .stat-icon {
+      background: #fff4de;
+      color: #c28c23;
+    }
+
+    .stat:nth-child(3) .stat-icon {
+      background: #e6f6ee;
+      color: #218c6d;
+    }
+
+    .filters {
+      margin: 16px 0;
+    }
+
+    .filters input {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 9px;
+      border-radius: 6px;
+      background: #e9f7ef;
+      color: #218c6d;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      min-width: 830px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 15px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+    }
+
+    th {
+      background: var(--bg);
+      color: var(--muted);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    td {
+      font-size: 12px;
+    }
+
+    td select {
+      max-width: 160px;
+      padding: 8px;
+      font-size: 12px;
+    }
+
+    .event-photo {
+      display: block;
+      width: 110px;
+      height: 72px;
+      border-radius: 9px;
+      object-fit: cover;
+      cursor: zoom-in;
+    }
+
+    .photo-button {
+      padding: 0;
+      background: transparent;
+    }
+
+    .danger {
+      padding: 7px 11px;
+      background: #fff0ee;
+      color: #c35c51;
+      font-size: 12px;
+    }
+
+    .day-list button {
+      border: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .day-list button.selected {
+      border-color: #bfc8ff;
+      background: var(--soft);
+      color: var(--accent);
+    }
+
+    #manualForm input {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    #manualForm input[type="file"] {
+      font-size: 12px;
+    }
+
+    .message {
+      color: #ae6736;
+      font-size: 13px;
+    }
+
+    .message:empty {
+      display: none;
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    dialog {
+      max-width: 94vw;
+      padding: 16px;
+      border: 0;
+      border-radius: 15px;
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    dialog::backdrop {
+      background: #07152bcc;
+    }
+
+    #largeImage {
+      display: block;
+      max-width: 85vw;
+      max-height: 75vh;
+      object-fit: contain;
+    }
+
+    dialog button {
+      margin-top: 12px;
+    }
+
+    body.dark {
+      --bg: #101623;
+      --surface: #192234;
+      --text: #e7edf7;
+      --muted: #9aa7bc;
+      --line: #2b364c;
+      --soft: #293153;
+    }
+
+    @media (max-width: 1000px) {
+      .sidebar {
+        width: 190px;
+      }
+
+      .layout {
+        margin-left: 190px;
+        padding: 25px;
+      }
+
+      .stat-icon {
+        display: none;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .sidebar {
+        position: static;
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .brand {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .brand-icon {
+        width: 32px;
+        height: 32px;
+      }
+
+      .sidebar a,
+      .sidebar .nav-label,
+      .sidebar-note {
+        display: none;
+      }
+
+      #themeButton {
+        margin: 0 0 0 auto;
+        font-size: 12px;
+      }
+
+      .layout {
+        margin-left: 0;
+        padding: 22px 15px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      .page-header {
+        flex-wrap: wrap;
+      }
+
+      .stats {
+        gap: 8px;
+      }
+
+      .stat {
+        padding: 13px 10px;
+      }
+
+      .stat-label {
+        font-size: 10px;
+      }
+
+      .stat-value {
+        font-size: 28px;
+      }
+
+      .panel {
+        padding: 17px;
+      }
+
+      #connection {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-icon">◈</span>
+      GateGuard.
+    </div>
+
+    <div class="nav-label">KHÔNG GIAN QUẢN LÝ</div>
+
+    <a class="active" href="#overview">▦ Tổng quan</a>
+    <a href="#history">◷ Lịch sử sự kiện</a>
+
+    <!-- Chỉ hiện khi đã xác thực admin -->
+    <a id="manualNav" href="#manualPanel" hidden>
+      ⊕ Thêm bản ghi
+    </a>
+
+    <div class="sidebar-note">
+      <strong>Camera cổng trường</strong>
+      Phát hiện tự động cần được xem ảnh và xác nhận.
+    </div>
+
+    <button id="themeButton" type="button">
+      ◐ Sáng / tối
+    </button>
+  </aside>
+
+  <main class="layout">
+    <header class="page-header" id="overview">
+      <div>
+        <div class="eyebrow">AN TOÀN HỌC ĐƯỜNG</div>
+        <h1>Một góc nhìn. An toàn hơn.</h1>
+        <p class="muted">
+          Theo dõi sự kiện, xem ảnh và quản lý lịch sử tại một nơi.
+        </p>
+      </div>
+
+      <button id="logoutButton" class="secondary" hidden>
+        Đăng xuất
+      </button>
+    </header>
+
+    <section id="loginPanel" class="panel">
+      <h2>Đăng nhập quản lý</h2>
+
+      <form id="loginForm" class="form-row">
+        <input
+          id="password"
+          type="password"
+          placeholder="Mật khẩu admin"
+          autocomplete="current-password"
+          aria-label="Mật khẩu admin"
+          required
+        >
+        <button id="loginButton" type="submit">
+          Đăng nhập
+        </button>
+      </form>
+
+      <p id="loginError" class="message" role="alert"></p>
+    </section>
+
+    <section class="panel">
+      <div class="toolbar">
+        <label>
+          Chọn ngày
+          <input id="day" type="date">
+        </label>
+
+        <button id="todayButton" class="secondary">
+          Hôm nay
+        </button>
+
+        <button id="allButton" class="secondary">
+          Tất cả ngày
+        </button>
+
+        <button id="exportButton" disabled>
+          Xuất CSV
+        </button>
+
+        <span id="connection" role="status">
+          Chưa đăng nhập
+        </span>
+      </div>
+    </section>
+
+    <div class="stats">
+      <article class="stat">
+        <span class="stat-label">Sự kiện trong phạm vi ngày</span>
+        <strong id="total" class="stat-value">0</strong>
+        <span class="stat-icon">↗</span>
+      </article>
+
+      <article class="stat">
+        <span class="stat-label">Chờ kiểm tra</span>
+        <strong id="pending" class="stat-value">0</strong>
+        <span class="stat-icon">◷</span>
+      </article>
+
+      <article class="stat">
+        <span class="stat-label">Đã xác nhận</span>
+        <strong id="confirmed" class="stat-value">0</strong>
+        <span class="stat-icon">✓</span>
+      </article>
+    </div>
+
+    <section class="panel">
+      <h2>Lịch sử theo ngày</h2>
+      <div id="days" class="day-list">
+        Đăng nhập để xem dữ liệu.
+      </div>
+    </section>
+
+    <section id="history" class="panel">
+      <h2>Nhật ký sự kiện</h2>
+
+      <p>
+        <span class="badge">Cập nhật mỗi 2 giây</span>
+        <span class="muted">
+          Các trường hợp nghi vi phạm cần được xác nhận.
+        </span>
+      </p>
+
+      <div class="filters">
+        <input
+          id="search"
+          type="search"
+          placeholder="Tìm sự kiện hoặc ghi chú…"
+          aria-label="Tìm sự kiện"
+        >
+
+        <select id="statusFilter" aria-label="Lọc trạng thái">
+          <option value="">Tất cả trạng thái</option>
+          <option value="Cho kiem tra">Chờ kiểm tra</option>
+          <option value="Da xac nhan">Đã xác nhận</option>
+          <option value="Nhan nham">Nhận nhầm</option>
+        </select>
+      </div>
+
+      <p id="message" class="message" role="alert"></p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Ảnh</th>
+              <th>Thời gian Việt Nam</th>
+              <th>Sự kiện</th>
+              <th>Ghi chú</th>
+              <th>Trạng thái</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="events"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Mặc định ẩn, không hiện chớp khi tải trang -->
+    <section id="manualPanel" class="panel" hidden>
+      <h2>Thêm sự kiện thủ công</h2>
+
+      <form id="manualForm" class="form-row">
+        <input
+          id="eventTime"
+          type="datetime-local"
+          aria-label="Thời gian Việt Nam"
+        >
+
+        <input
+          id="eventKind"
+          value="Nghi không đội mũ"
+          maxlength="100"
+          aria-label="Loại sự kiện"
+          required
+        >
+
+        <input
+          id="eventNote"
+          placeholder="Ghi chú / vị trí camera"
+          maxlength="1000"
+          aria-label="Ghi chú"
+        >
+
+        <input
+          id="eventPhoto"
+          type="file"
+          accept="image/jpeg"
+          aria-label="Ảnh minh chứng JPEG"
+        >
+
+        <button id="saveButton" type="submit">
+          Lưu sự kiện
+        </button>
+      </form>
+
+      <p class="muted">
+        Thời gian nhập theo giờ Việt Nam. Để trống để dùng giờ hiện tại.
+        Ảnh JPEG tối đa 2 MB.
+      </p>
+
+      <p id="manualMessage" class="message" role="status"></p>
+    </section>
+
+    <footer>
+      Danh sách và CSV chứa tối đa 2.000 sự kiện gần nhất trong phạm vi
+      ngày đã chọn. Lọc từng ngày để xem lịch sử chi tiết.
+    </footer>
+  </main>
+
+  <dialog id="imageDialog">
+    <img id="largeImage" alt="Ảnh minh chứng sự kiện">
+    <button id="closeImage" type="button">Đóng ảnh</button>
+  </dialog>
+
+  <script>
+    const $ = id => document.getElementById(id);
+
+    const statusLabels = {
+      "Cho kiem tra": "Chờ kiểm tra",
+      "Da xac nhan": "Đã xác nhận",
+      "Nhan nham": "Nhận nhầm"
+    };
+
+    let isAdmin = false;
+    let refreshing = false;
+    let records = [];
+    let lastSignature = null;
+
+    // Dùng để bỏ qua kết quả tải cũ sau đăng xuất.
+    let authVersion = 0;
+    let authenticating = false;
+
+    function vietnamToday() {
+      return new Date(Date.now() + 7 * 60 * 60 * 1000)
+        .toISOString()
+        .slice(0, 10);
+    }
+
+    $("day").value = vietnamToday();
+
+    function showEmpty(text) {
+      $("events").replaceChildren();
+
+      const row = document.createElement("tr");
+      const cell = document.createElement("td");
+
+      cell.colSpan = 6;
+      cell.textContent = text;
+
+      row.append(cell);
+      $("events").append(row);
+    }
+
+    function setAdmin(active) {
+      isAdmin = active;
+
+      $("manualPanel").hidden = !active;
+      $("manualNav").hidden = !active;
+      $("logoutButton").hidden = !active;
+      $("loginPanel").hidden = active;
+      $("exportButton").disabled = !active;
+
+      if (!active) {
+        records = [];
+        lastSignature = null;
+
+        $("manualForm").reset();
+        $("manualMessage").textContent = "";
+        $("days").textContent = "Đăng nhập để xem dữ liệu.";
+
+        $("total").textContent = "0";
+        $("pending").textContent = "0";
+        $("confirmed").textContent = "0";
+
+        $("connection").textContent = "Chưa đăng nhập";
+
+        showEmpty("Đăng nhập admin để xem lịch sử sự kiện.");
+
+        if ($("imageDialog").open) {
+          $("imageDialog").close();
+        }
+
+        $("largeImage").removeAttribute("src");
+      }
+    }
+
+    async function api(path, body, options = {}) {
+      const response = await fetch(path, {
+        method: body === undefined ? "GET" : "POST",
+        credentials: "same-origin",
+        cache: "no-store",
+        headers: body === undefined
+          ? {}
+          : { "Content-Type": "application/json" },
+        body: body === undefined ? undefined : JSON.stringify(body)
+      });
+
+      if (!response.ok) {
+        if (response.status === 401 && !options.loginRequest) {
+          setAdmin(false);
+        }
+
+        let detail = {};
+
+        try {
+          detail = await response.json();
+        } catch (_) {
+          // Phản hồi có thể không phải JSON.
+        }
+
+        throw new Error(
+          detail.error || `Yêu cầu thất bại (${response.status}).`
+        );
+      }
+
+      return response;
+    }
+
+    async function getJSON(path, body, options) {
+      const response = await api(path, body, options);
+      return response.json();
+    }
+
+    function addCell(row, text = "") {
+      const cell = document.createElement("td");
+      cell.textContent = text;
+      row.append(cell);
+      return cell;
+    }
+
+    function renderRecords() {
+      const query = $("search").value
+        .trim()
+        .toLocaleLowerCase("vi");
+
+      const selectedStatus = $("statusFilter").value;
+
+      const visible = records.filter(record => {
+        const text = `${record.kind} ${record.note}`
+          .toLocaleLowerCase("vi");
+
+        return (
+          (!selectedStatus || record.status === selectedStatus) &&
+          (!query || text.includes(query))
+        );
+      });
+
+      $("total").textContent = records.length;
+
+      $("pending").textContent = records.filter(
+        record => record.status === "Cho kiem tra"
+      ).length;
+
+      $("confirmed").textContent = records.filter(
+        record => record.status === "Da xac nhan"
+      ).length;
+
+      if (!visible.length) {
+        showEmpty("Không có sự kiện phù hợp với bộ lọc hiện tại.");
+        return;
+      }
+
+      $("events").replaceChildren();
+
+      for (const record of visible) {
+        const row = document.createElement("tr");
+        const photoCell = addCell(row);
+
+        if (record.image) {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "photo-button";
+          button.setAttribute(
+            "aria-label",
+            `Xem ảnh sự kiện ${record.id}`
+          );
+
+          const image = document.createElement("img");
+          image.className = "event-photo";
+          image.loading = "lazy";
+          image.src = `/images/${encodeURIComponent(record.image)}`;
+          image.alt = `Ảnh sự kiện ${record.id}`;
+
+          button.append(image);
+
+          button.onclick = () => {
+            $("largeImage").src = image.src;
+            $("imageDialog").showModal();
+          };
+
+          photoCell.append(button);
+        } else {
+          photoCell.textContent = "Không có ảnh";
+        }
+
+        addCell(
+          row,
+          new Date(record.time).toLocaleString("vi-VN", {
+            timeZone: "Asia/Ho_Chi_Minh"
+          })
+        );
+
+        addCell(row, record.kind);
+        addCell(row, record.note);
+
+        const statusCell = addCell(row);
+        const select = document.createElement("select");
+
+        select.setAttribute(
+          "aria-label",
+          `Trạng thái sự kiện ${record.id}`
+        );
+
+        for (const [value, label] of Object.entries(statusLabels)) {
+          select.add(new Option(label, value));
+        }
+
+        select.value = record.status;
+
+        select.onchange = async () => {
+          const previousStatus = record.status;
+          select.disabled = true;
+
+          try {
+            await getJSON("/api/status", {
+              id: record.id,
+              status: select.value
+            });
+
+            lastSignature = null;
+            await refresh();
+          } catch (error) {
+            select.value = previousStatus;
+            $("message").textContent = error.message;
+          } finally {
+            select.disabled = false;
+          }
+        };
+
+        statusCell.append(select);
+
+        const deleteCell = addCell(row);
+        const deleteButton = document.createElement("button");
+
+        deleteButton.type = "button";
+        deleteButton.className = "danger";
+        deleteButton.textContent = "Xóa";
+
+        deleteButton.onclick = async () => {
+          if (!confirm("Xóa bản ghi và ảnh minh chứng này?")) {
+            return;
+          }
+
+          deleteButton.disabled = true;
+
+          try {
+            await getJSON("/api/delete", { id: record.id });
+
+            lastSignature = null;
+            await refresh();
+          } catch (error) {
+            $("message").textContent = error.message;
+          } finally {
+            deleteButton.disabled = false;
+          }
+        };
+
+        deleteCell.append(deleteButton);
+        $("events").append(row);
+      }
+    }
+
+    function renderDays(days) {
+      $("days").replaceChildren();
+
+      if (!days.length) {
+        $("days").textContent = "Chưa có dữ liệu.";
+        return;
+      }
+
+      for (const item of days) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = `${item.day} · ${item.count}`;
+
+        if (item.day === $("day").value) {
+          button.classList.add("selected");
+        }
+
+        button.onclick = () => {
+          $("day").value = item.day;
+          lastSignature = null;
+          refresh();
+        };
+
+        $("days").append(button);
+      }
+    }
+
+    async function refresh() {
+      if (refreshing || authenticating) {
+        return;
+      }
+
+      refreshing = true;
+
+      const version = authVersion;
+      const selectedDay = $("day").value;
+
+      try {
+        const [newRecords, days] = await Promise.all([
+          getJSON(`/api/events?day=${encodeURIComponent(selectedDay)}`),
+          getJSON("/api/days")
+        ]);
+
+        // Không cho kết quả cũ mở lại phần admin sau đăng xuất.
+        if (version !== authVersion) {
+          return;
+        }
+
+        if ($("day").value !== selectedDay) {
+          return;
+        }
+
+        if (!Array.isArray(newRecords) || !Array.isArray(days)) {
+          throw new Error(
+            "API trả về sai định dạng. Kiểm tra triển khai Worker."
+          );
+        }
+
+        setAdmin(true);
+
+        const signature = JSON.stringify({
+          day: selectedDay,
+          records: newRecords,
+          days
+        });
+
+        // Tránh vẽ lại bảng mỗi 2 giây nếu dữ liệu không đổi.
+        if (signature !== lastSignature) {
+          records = newRecords;
+          lastSignature = signature;
+          renderRecords();
+          renderDays(days);
+        }
+
+        $("connection").textContent = "● Đã kết nối";
+        $("message").textContent = "";
+      } catch (error) {
+        if (version !== authVersion) {
+          return;
+        }
+
+        $("connection").textContent = isAdmin
+          ? "● Mất kết nối"
+          : "Chưa đăng nhập";
+
+        $("message").textContent = error.message;
+      } finally {
+        refreshing = false;
+      }
+    }
+
+    $("loginForm").onsubmit = async event => {
+      event.preventDefault();
+
+      authenticating = true;
+      authVersion += 1;
+
+      $("loginButton").disabled = true;
+      $("loginError").textContent = "";
+
+      try {
+        await getJSON(
+          "/api/login",
+          { password: $("password").value },
+          { loginRequest: true }
+        );
+
+        $("password").value = "";
+        lastSignature = null;
+      } catch (error) {
+        $("loginError").textContent = error.message;
+      } finally {
+        authenticating = false;
+        $("loginButton").disabled = false;
+      }
+
+      await refresh();
+    };
+
+    $("logoutButton").onclick = async () => {
+      authVersion += 1;
+      authenticating = true;
+      setAdmin(false);
+
+      try {
+        await getJSON("/api/logout", {});
+      } catch (error) {
+        $("loginError").textContent =
+          "Chưa xác nhận được đăng xuất với máy chủ. " +
+          error.message;
+      } finally {
+        authenticating = false;
+      }
+    };
+
+    $("manualForm").onsubmit = async event => {
+      event.preventDefault();
+
+      if (!isAdmin) {
+        $("manualMessage").textContent =
+          "Bạn cần đăng nhập admin trước.";
+        return;
+      }
+
+      $("saveButton").disabled = true;
+      $("manualMessage").textContent = "";
+
+      try {
+        const file = $("eventPhoto").files[0];
+        let image = "";
+
+        if (file) {
+          if (file.size > 2_000_000) {
+            throw new Error("Ảnh tối đa 2 MB.");
+          }
+
+          if (file.type && file.type !== "image/jpeg") {
+            throw new Error("Vui lòng chọn ảnh JPEG.");
+          }
+
+          image = await new Promise((resolve, reject) => {
+            const reader = new FileReader();
+
+            reader.onload = () => {
+              resolve(String(reader.result).split(",")[1]);
+            };
+
+            reader.onerror = () => {
+              reject(new Error("Không đọc được ảnh."));
+            };
+
+            reader.readAsDataURL(file);
+          });
+        }
+
+        const enteredTime = $("eventTime").value;
+
+        await getJSON("/api/events", {
+          kind: $("eventKind").value,
+          note: $("eventNote").value,
+          image,
+          time: enteredTime
+            ? enteredTime + (
+                enteredTime.length === 16 ? ":00+07:00" : "+07:00"
+              )
+            : undefined
+        });
+
+        $("manualMessage").textContent = "Đã lưu sự kiện.";
+        $("eventNote").value = "";
+        $("eventPhoto").value = "";
+
+        lastSignature = null;
+        await refresh();
+      } catch (error) {
+        $("manualMessage").textContent = error.message;
+      } finally {
+        $("saveButton").disabled = false;
+      }
+    };
+
+    $("todayButton").onclick = () => {
+      $("day").value = vietnamToday();
+      lastSignature = null;
+      refresh();
+    };
+
+    $("allButton").onclick = () => {
+      $("day").value = "";
+      lastSignature = null;
+      refresh();
+    };
+
+    $("day").onchange = () => {
+      lastSignature = null;
+      refresh();
+    };
+
+    $("search").oninput = () => {
+      if (isAdmin) {
+        renderRecords();
+      }
+    };
+
+    $("statusFilter").onchange = () => {
+      if (isAdmin) {
+        renderRecords();
+      }
+    };
+
+    $("exportButton").onclick = async () => {
+      if (!isAdmin) {
+        return;
+      }
+
+      try {
+        const response = await api(
+          `/api/export?day=${encodeURIComponent($("day").value)}`
+        );
+
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+
+        link.href = url;
+        link.download = `su-kien-${$("day").value || "tat-ca"}.csv`;
+
+        document.body.append(link);
+        link.click();
+        link.remove();
+
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      } catch (error) {
+        $("message").textContent = error.message;
+      }
+    };
+
+    $("closeImage").onclick = () => {
+      $("imageDialog").close();
+    };
+
+    try {
+      if (localStorage.getItem("gate-theme") === "dark") {
+        document.body.classList.add("dark");
+      }
+    } catch (_) {
+      // Giao diện vẫn hoạt động nếu trình duyệt chặn localStorage.
+    }
+
+    $("themeButton").onclick = () => {
+      document.body.classList.toggle("dark");
+
+      try {
+        localStorage.setItem(
+          "gate-theme",
+          document.body.classList.contains("dark") ? "dark" : "light"
+        );
+      } catch (_) {}
+    };
+
+    // Mặc định ẩn mọi điều khiển admin.
+    setAdmin(false);
+
+    // Kiểm tra phiên đăng nhập đã lưu trong cookie.
+    refresh();
+
+    setInterval(() => {
+      // Chưa đăng nhập thì không liên tục gọi API.
+      if (isAdmin && !document.hidden) {
+        refresh();
+      }
+    }, 2000);
+
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden && isAdmin) {
+        refresh();
+      }
+    });
+  </script>
+</body>
+</html>
