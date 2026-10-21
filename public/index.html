@@ -10,7 +10,7 @@
   --bg:#f4f6fb;
   --card:#fff;
   --text:#182640;
-  --muted:#7c879c;
+  --muted:#748097;
   --border:#e5eaf3;
   --primary:#5468ef;
   --soft:#eef0ff;
@@ -26,8 +26,10 @@ body {
   font:14px/1.6 "Segoe UI",system-ui,sans-serif;
 }
 
-button,input,select,textarea { font:inherit; }
-button,input,select,textarea { outline-offset:4px; }
+button,input,select,textarea {
+  font:inherit;
+  outline-offset:4px;
+}
 
 button {
   padding:10px 15px;
@@ -52,8 +54,16 @@ input,select,textarea {
 }
 
 textarea { resize:vertical; }
-.secondary { background:var(--soft); color:var(--primary); }
-.danger { background:#fff0ee; color:#c65049; }
+
+.secondary {
+  background:var(--soft);
+  color:var(--primary);
+}
+
+.danger {
+  background:#fff0ee;
+  color:#c65049;
+}
 
 header {
   background:var(--card);
@@ -86,7 +96,7 @@ header {
   height:40px;
   border-radius:12px;
   background:var(--primary);
-  color:white;
+  color:#fff;
 }
 
 .row,.filters {
@@ -146,7 +156,10 @@ p { margin:8px 0; }
 .stat span { color:var(--muted); font-size:12px; }
 .stat strong { display:block; font-size:34px; }
 
-.filters input[type=search] { flex:1; min-width:180px; }
+.filters input[type=search] {
+  flex:1;
+  min-width:180px;
+}
 
 .connection {
   margin-left:auto;
@@ -157,7 +170,16 @@ p { margin:8px 0; }
   font-size:12px;
 }
 
-.day-list { display:flex; flex-wrap:wrap; gap:8px; }
+.connection.offline {
+  background:#fff0ee;
+  color:#b34f45;
+}
+
+.day-list {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
 
 .day-list button {
   border:1px solid var(--border);
@@ -205,7 +227,11 @@ td { font-size:13px; }
   object-fit:cover;
 }
 
-.photo-button { padding:0; background:transparent; cursor:zoom-in; }
+.photo-button {
+  padding:0;
+  background:transparent;
+  cursor:zoom-in;
+}
 
 .status {
   display:inline-block;
@@ -219,8 +245,17 @@ td { font-size:13px; }
 .confirmed { background:#e8f6ee; color:#218968; }
 .mistake { background:#edf0f6; color:#738099; }
 
-.actions { display:flex; flex-wrap:wrap; gap:6px; min-width:180px; }
-.actions button { padding:7px 10px; font-size:11px; }
+.actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  min-width:180px;
+}
+
+.actions button {
+  padding:7px 10px;
+  font-size:11px;
+}
 
 .admin-banner {
   display:flex;
@@ -260,7 +295,11 @@ dialog::backdrop {
 }
 
 .dialog-head h2 { margin:0; }
-.form-grid { display:grid; gap:14px; }
+
+.form-grid {
+  display:grid;
+  gap:14px;
+}
 
 .form-grid label {
   display:grid;
@@ -269,7 +308,6 @@ dialog::backdrop {
   font-size:12px;
 }
 
-/* Cua so xem anh va danh dau */
 #imageDialog { width:min(1200px,96vw); }
 
 .annotation-tools {
@@ -300,8 +338,17 @@ dialog::backdrop {
   font-size:12px;
 }
 
-#markColor { width:42px; height:34px; padding:3px; }
-#markSize { width:95px; padding:0; accent-color:var(--primary); }
+#markColor {
+  width:42px;
+  height:34px;
+  padding:3px;
+}
+
+#markSize {
+  width:95px;
+  padding:0;
+  accent-color:var(--primary);
+}
 
 .image-area {
   padding:12px;
@@ -344,8 +391,16 @@ dialog::backdrop {
   margin-top:14px;
 }
 
-.annotation-note { color:var(--muted); font-size:12px; }
-footer { margin-top:20px; color:var(--muted); font-size:11px; }
+.annotation-note {
+  color:var(--muted);
+  font-size:12px;
+}
+
+footer {
+  margin-top:20px;
+  color:var(--muted);
+  font-size:11px;
+}
 
 body.dark {
   --bg:#101625;
@@ -384,10 +439,14 @@ body.dark {
     </div>
 
     <div class="row">
-      <button id="themeButton" class="secondary" type="button">◐ Sáng / tối</button>
+      <button id="themeButton" class="secondary" type="button">
+        ◐ Sáng / tối
+      </button>
       <button id="loginOpen" type="button">Đăng nhập admin</button>
       <button id="adminOpen" type="button" hidden>Trang admin</button>
-      <button id="logoutButton" class="secondary" type="button" hidden>Đăng xuất</button>
+      <button id="logoutButton" class="secondary" type="button" hidden>
+        Đăng xuất
+      </button>
     </div>
   </div>
 </header>
@@ -404,35 +463,70 @@ body.dark {
   <section id="adminBanner" class="panel admin-banner" hidden>
     <div>
       <strong>Không gian quản trị</strong>
-      <div class="muted">Thêm, chỉnh sửa và xác nhận các sự kiện.</div>
+      <div class="muted">
+        Thêm, chỉnh sửa, xác nhận sự kiện và lưu ảnh đánh dấu.
+      </div>
     </div>
     <div class="row">
       <button id="addButton" type="button">＋ Thêm sự kiện</button>
-      <button id="publicOpen" class="secondary" type="button">Về trang xem</button>
+      <button id="publicOpen" class="secondary" type="button">
+        Về trang xem
+      </button>
     </div>
   </section>
 
   <section class="panel">
     <div class="filters">
       <label>Ngày <input id="day" type="date"></label>
-      <button id="todayButton" class="secondary" type="button">Hôm nay</button>
-      <button id="allButton" class="secondary" type="button">Tất cả</button>
-      <input id="search" type="search" placeholder="Tìm sự kiện hoặc ghi chú…" aria-label="Tìm sự kiện">
+      <button id="todayButton" class="secondary" type="button">
+        Hôm nay
+      </button>
+      <button id="allButton" class="secondary" type="button">
+        Tất cả
+      </button>
+
+      <input
+        id="search"
+        type="search"
+        placeholder="Tìm sự kiện hoặc ghi chú…"
+        aria-label="Tìm sự kiện"
+      >
+
       <select id="statusFilter" aria-label="Trạng thái">
         <option value="">Tất cả trạng thái</option>
         <option value="Cho kiem tra">Chờ kiểm tra</option>
         <option value="Da xac nhan">Đã xác nhận</option>
         <option value="Nhan nham">Nhận nhầm</option>
       </select>
-      <button id="exportButton" class="secondary" type="button" hidden>Xuất CSV</button>
-      <span id="connection" class="connection" role="status">Đang kết nối…</span>
+
+      <button
+        id="exportButton"
+        class="secondary"
+        type="button"
+        hidden
+      >
+        Xuất CSV
+      </button>
+
+      <span id="connection" class="connection" role="status">
+        Đang kết nối…
+      </span>
     </div>
   </section>
 
   <div class="stats">
-    <article class="stat"><span>Sự kiện trong phạm vi ngày</span><strong id="total">0</strong></article>
-    <article class="stat"><span>Chờ kiểm tra</span><strong id="pending">0</strong></article>
-    <article class="stat"><span>Đã xác nhận</span><strong id="confirmed">0</strong></article>
+    <article class="stat">
+      <span>Sự kiện trong phạm vi ngày</span>
+      <strong id="total">0</strong>
+    </article>
+    <article class="stat">
+      <span>Chờ kiểm tra</span>
+      <strong id="pending">0</strong>
+    </article>
+    <article class="stat">
+      <span>Đã xác nhận</span>
+      <strong id="confirmed">0</strong>
+    </article>
   </div>
 
   <section class="panel">
@@ -443,9 +537,10 @@ body.dark {
   <section class="panel">
     <h2>Danh sách sự kiện</h2>
     <p class="muted">
-      Bấm vào ảnh để xem lớn và dùng công cụ đánh dấu.
+      Bấm vào ảnh để xem lớn và đánh dấu.
       Các phát hiện nghi không đội mũ cần được kiểm tra trước khi xác nhận.
     </p>
+
     <p id="message" class="message" role="alert"></p>
 
     <div class="table-wrap">
@@ -466,20 +561,30 @@ body.dark {
   </section>
 
   <footer>
-    Tự cập nhật mỗi 2 giây. Tối đa 2.000 sự kiện gần nhất trong phạm vi ngày đã chọn.
-    Ảnh và lịch sử được xem công khai.
+    Tự cập nhật mỗi 2 giây. Tối đa 2.000 sự kiện gần nhất
+    trong phạm vi ngày đã chọn. Ảnh và lịch sử được xem công khai.
   </footer>
 </main>
 
 <dialog id="loginDialog">
   <div class="dialog-head">
     <h2>Đăng nhập admin</h2>
-    <button id="loginClose" class="secondary" type="button">Đóng</button>
+    <button id="loginClose" class="secondary" type="button">
+      Đóng
+    </button>
   </div>
+
   <form id="loginForm" class="form-grid">
-    <label>Mã / mật khẩu quản trị
-      <input id="password" type="password" autocomplete="current-password" required>
+    <label>
+      Mã / mật khẩu quản trị
+      <input
+        id="password"
+        type="password"
+        autocomplete="current-password"
+        required
+      >
     </label>
+
     <button id="loginSubmit" type="submit">Vào trang admin</button>
     <p id="loginError" class="message" role="alert"></p>
   </form>
@@ -488,560 +593,880 @@ body.dark {
 <dialog id="editDialog">
   <div class="dialog-head">
     <h2 id="editTitle">Thêm sự kiện</h2>
-    <button id="editClose" class="secondary" type="button">Đóng</button>
+    <button id="editClose" class="secondary" type="button">
+      Đóng
+    </button>
   </div>
+
   <form id="eventForm" class="form-grid">
-    <label>Thời gian Việt Nam
+    <label>
+      Thời gian Việt Nam
       <input id="eventTime" type="datetime-local">
     </label>
-    <label>Loại sự kiện
+
+    <label>
+      Loại sự kiện
       <input id="eventKind" maxlength="100" required>
     </label>
-    <label>Ghi chú
+
+    <label>
+      Ghi chú
       <textarea id="eventNote" rows="3" maxlength="1000"></textarea>
     </label>
-    <label>Trạng thái
+
+    <label>
+      Trạng thái
       <select id="eventStatus">
         <option value="Cho kiem tra">Chờ kiểm tra</option>
         <option value="Da xac nhan">Đã xác nhận</option>
         <option value="Nhan nham">Nhận nhầm</option>
       </select>
     </label>
-    <label id="photoField">Ảnh JPEG — tối đa 2 MB
+
+    <label id="photoField">
+      Ảnh JPEG — tối đa 2 MB
       <input id="eventPhoto" type="file" accept="image/jpeg">
     </label>
-    <p id="editPhotoNote" class="muted" hidden>Chỉnh sửa thông tin giữ nguyên ảnh minh chứng.</p>
+
+    <p id="editPhotoNote" class="muted" hidden>
+      Chỉnh sửa thông tin giữ nguyên ảnh minh chứng.
+    </p>
+
     <button id="saveButton" type="submit">Lưu sự kiện</button>
     <p id="formMessage" class="message" role="alert"></p>
   </form>
 </dialog>
 
-<!-- Xem anh va ve truc tiep len anh -->
 <dialog id="imageDialog">
   <div class="dialog-head">
     <div>
       <h2 id="imageTitle">Ảnh sự kiện</h2>
       <div id="imageInfo" class="muted"></div>
     </div>
-    <button id="imageClose" class="secondary" type="button">Đóng</button>
+
+    <button id="imageClose" class="secondary" type="button">
+      Đóng
+    </button>
   </div>
 
-  <div class="annotation-tools" id="annotationTools">
-    <button type="button" data-tool="pen" aria-pressed="true">✎ Bút</button>
-    <button type="button" data-tool="rect" aria-pressed="false">▭ Khung</button>
-    <button type="button" data-tool="ellipse" aria-pressed="false">◯ Khoanh tròn</button>
-    <button type="button" data-tool="arrow" aria-pressed="false">↗ Mũi tên</button>
-    <button type="button" data-tool="eraser" aria-pressed="false">Tẩy</button>
+  <div class="annotation-tools">
+    <button type="button" data-tool="pen" aria-pressed="true">
+      ✎ Bút
+    </button>
+    <button type="button" data-tool="rect" aria-pressed="false">
+      ▭ Khung
+    </button>
+    <button type="button" data-tool="ellipse" aria-pressed="false">
+      ◯ Khoanh tròn
+    </button>
+    <button type="button" data-tool="arrow" aria-pressed="false">
+      ↗ Mũi tên
+    </button>
+    <button type="button" data-tool="eraser" aria-pressed="false">
+      Tẩy
+    </button>
 
-    <label>Màu <input id="markColor" type="color" value="#ff3030"></label>
-    <label>Nét <input id="markSize" type="range" min="1" max="20" value="4"></label>
+    <label>
+      Màu
+      <input id="markColor" type="color" value="#ff3030">
+    </label>
+
+    <label>
+      Nét
+      <input id="markSize" type="range" min="1" max="20" value="4">
+    </label>
 
     <button id="markUndo" type="button" disabled>Hoàn tác</button>
-    <button id="markClear" type="button" disabled>Xóa đánh dấu</button>
+    <button id="markClear" type="button" disabled>
+      Xóa nét mới
+    </button>
   </div>
 
   <div class="image-area">
     <div id="imageStage" class="image-stage">
-      <img id="sourceImage" alt="Ảnh sự kiện gốc" draggable="false">
-      <canvas id="markCanvas" width="1" height="1" aria-label="Vẽ đánh dấu trên ảnh"></canvas>
+      <img
+        id="sourceImage"
+        alt="Ảnh sự kiện"
+        draggable="false"
+      >
+      <canvas
+        id="markCanvas"
+        width="1"
+        height="1"
+        aria-label="Vẽ đánh dấu trên ảnh"
+      ></canvas>
     </div>
   </div>
 
   <div class="annotation-footer">
-    <span id="markNotice" class="annotation-note" role="status">Đang tải ảnh…</span>
-    <button id="markDownload" type="button" disabled>↓ Tải ảnh đã đánh dấu</button>
+    <span id="markNotice" class="annotation-note" role="status">
+      Đang tải ảnh…
+    </span>
+
+    <div class="row">
+      <button id="markSaveWeb" type="button" hidden disabled>
+        Lưu ảnh lên web
+      </button>
+
+      <button id="markDownload" type="button" disabled>
+        ↓ Tải ảnh đã đánh dấu
+      </button>
+    </div>
   </div>
 
   <p class="annotation-note">
-    Phần đánh dấu chỉ dùng trên ảnh đang mở và khi tải PNG.
-    Không sửa ảnh gốc hoặc dữ liệu sự kiện trên máy chủ.
+    Khách và admin đều có thể vẽ và tải ảnh.
+    Chỉ admin được lưu ảnh đánh dấu lên website.
+    Ảnh gốc được giữ riêng.
+  </p>
+
+  <p class="annotation-note">
+    Khi mở lại bản đã lưu, nét cũ nằm trong ảnh nền.
+    Hoàn tác và tẩy chỉ áp dụng cho nét mới của lần mở hiện tại.
   </p>
 </dialog>
 
 <script>
+"use strict";
+
 const $ = id => document.getElementById(id);
+
 const labels = {
   "Cho kiem tra":"Chờ kiểm tra",
   "Da xac nhan":"Đã xác nhận",
   "Nhan nham":"Nhận nhầm"
 };
 
-let isAdmin=false, adminView=false, records=[], busy=false;
-let editingId=null, signature="", sessionVersion=0;
-let checkingSession=false, authBusy=false;
+let isAdmin = false;
+let adminView = false;
+let records = [];
+let busy = false;
+let refreshAgain = false;
+
+let editingId = null;
+let signature = "";
+let sessionVersion = 0;
+let checkingSession = false;
+let authBusy = false;
+
+const markCanvas = $("markCanvas");
+const markContext = markCanvas.getContext("2d");
+const sourceImage = $("sourceImage");
+
+let marks = [];
+let currentMark = null;
+let pointerId = null;
+let selectedTool = "pen";
+let imageReady = false;
+let activeImageId = null;
+let imageLoadVersion = 0;
+
+let savingMarks = false;
+let savedMarksSignature = "[]";
+let downloadedMarksSignature = "[]";
 
 function todayVN() {
-  return new Date(Date.now()+7*3600000).toISOString().slice(0,10);
+  return new Date(Date.now() + 7 * 3600000)
+    .toISOString()
+    .slice(0, 10);
 }
 
 function timeInputVN(time) {
-  return new Date(new Date(time).getTime()+7*3600000).toISOString().slice(0,16);
+  return new Date(new Date(time).getTime() + 7 * 3600000)
+    .toISOString()
+    .slice(0, 16);
 }
 
-$("day").value=todayVN();
+function displayTime(time) {
+  return new Date(time).toLocaleString("vi-VN", {
+    timeZone:"Asia/Ho_Chi_Minh"
+  });
+}
+
+$("day").value = todayVN();
+
+function updateMarkSaveUI() {
+  $("markSaveWeb").hidden = !isAdmin;
+  $("markSaveWeb").disabled =
+    !isAdmin || !imageReady || savingMarks;
+
+  $("markDownload").disabled = !imageReady;
+  $("imageClose").disabled = savingMarks;
+}
 
 function updateAdminUI() {
-  const editing=isAdmin&&adminView;
-  $("loginOpen").hidden=isAdmin;
-  $("adminOpen").hidden=!isAdmin||adminView;
-  $("logoutButton").hidden=!isAdmin;
-  $("adminBanner").hidden=!editing;
-  $("actionsHeading").hidden=!editing;
-  $("exportButton").hidden=!editing;
-  $("pageTitle").textContent=editing?"Quản lý sự kiện":"Nhật ký cổng trường";
-  $("pageDescription").textContent=editing
-    ?"Kiểm tra ảnh, chỉnh sửa thông tin và xác nhận các phát hiện."
-    :"Xem sự kiện, mở ảnh để xem chi tiết và đánh dấu trực tiếp.";
+  const editing = isAdmin && adminView;
+
+  $("loginOpen").hidden = isAdmin;
+  $("adminOpen").hidden = !isAdmin || adminView;
+  $("logoutButton").hidden = !isAdmin;
+
+  $("adminBanner").hidden = !editing;
+  $("actionsHeading").hidden = !editing;
+  $("exportButton").hidden = !editing;
+
+  $("pageTitle").textContent = editing
+    ? "Quản lý sự kiện"
+    : "Nhật ký cổng trường";
+
+  $("pageDescription").textContent = editing
+    ? "Kiểm tra ảnh, chỉnh sửa thông tin và xác nhận các phát hiện."
+    : "Xem sự kiện, mở ảnh để xem chi tiết và đánh dấu trực tiếp.";
+
+  updateMarkSaveUI();
   renderRecords();
 }
 
 function loseSession() {
   sessionVersion++;
-  isAdmin=false;
-  adminView=false;
-  if($("editDialog").open) $("editDialog").close();
+  isAdmin = false;
+  adminView = false;
+
+  if ($("editDialog").open) {
+    $("editDialog").close();
+  }
+
   updateAdminUI();
 }
 
-async function api(path,body) {
-  const response=await fetch(path,{
-    method:body===undefined?"GET":"POST",
+async function api(path, body) {
+  const response = await fetch(path, {
+    method:body === undefined ? "GET" : "POST",
     credentials:"same-origin",
     cache:"no-store",
-    headers:body===undefined?{}:{"Content-Type":"application/json"},
-    body:body===undefined?undefined:JSON.stringify(body)
+    headers:body === undefined
+      ? {}
+      : {"Content-Type":"application/json"},
+    body:body === undefined
+      ? undefined
+      : JSON.stringify(body)
   });
 
-  if(!response.ok) {
-    if(response.status===401&&path!=="/api/login") loseSession();
-    let detail={};
-    try {detail=await response.json();} catch(_) {}
-    throw new Error(detail.error||`Lỗi ${response.status}`);
+  if (!response.ok) {
+    if (response.status === 401 && path !== "/api/login") {
+      loseSession();
+    }
+
+    let detail = {};
+
+    try {
+      detail = await response.json();
+    } catch (_) {}
+
+    throw new Error(detail.error || `Lỗi ${response.status}`);
   }
+
   return response;
 }
 
-async function json(path,body) {
-  return (await api(path,body)).json();
+async function json(path, body) {
+  return (await api(path, body)).json();
 }
 
-function cell(row,text="") {
-  const td=document.createElement("td");
-  td.textContent=text;
+function cell(row, text = "") {
+  const td = document.createElement("td");
+  td.textContent = text;
   row.append(td);
   return td;
 }
 
-function action(text,className,callback) {
-  const button=document.createElement("button");
-  button.type="button";
-  button.textContent=text;
-  button.className=className;
-  button.onclick=callback;
+function action(text, className, callback) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.textContent = text;
+  button.className = className;
+  button.onclick = callback;
   return button;
 }
 
-async function changeStatus(record,status) {
+async function changeStatus(record, status) {
   try {
-    await json("/api/status",{id:record.id,status});
-    signature="";
+    await json("/api/status", {
+      id:record.id,
+      status
+    });
+
+    signature = "";
     await refresh();
-  } catch(error) {$("message").textContent=error.message;}
+  } catch (error) {
+    $("message").textContent = error.message;
+  }
 }
 
 function renderRecords() {
-  const query=$("search").value.trim().toLocaleLowerCase("vi");
-  const status=$("statusFilter").value;
-  const canEdit=isAdmin&&adminView;
+  const query = $("search").value.trim().toLocaleLowerCase("vi");
+  const status = $("statusFilter").value;
+  const canEdit = isAdmin && adminView;
 
-  const visible=records.filter(record=>
-    (!status||record.status===status)&&
-    (!query||`${record.kind} ${record.note}`.toLocaleLowerCase("vi").includes(query))
+  const visible = records.filter(record =>
+    (!status || record.status === status) &&
+    (
+      !query ||
+      `${record.kind} ${record.note}`
+        .toLocaleLowerCase("vi")
+        .includes(query)
+    )
   );
 
-  $("total").textContent=records.length;
-  $("pending").textContent=records.filter(r=>r.status==="Cho kiem tra").length;
-  $("confirmed").textContent=records.filter(r=>r.status==="Da xac nhan").length;
+  $("total").textContent = records.length;
+
+  $("pending").textContent =
+    records.filter(r => r.status === "Cho kiem tra").length;
+
+  $("confirmed").textContent =
+    records.filter(r => r.status === "Da xac nhan").length;
+
   $("events").replaceChildren();
 
-  if(!visible.length) {
-    const row=document.createElement("tr");
-    cell(row,"Không có sự kiện phù hợp.").colSpan=canEdit?6:5;
+  if (!visible.length) {
+    const row = document.createElement("tr");
+    cell(row, "Không có sự kiện phù hợp.").colSpan =
+      canEdit ? 6 : 5;
     $("events").append(row);
     return;
   }
 
-  for(const record of visible) {
-    const row=document.createElement("tr");
-    const photoCell=cell(row);
+  for (const record of visible) {
+    const row = document.createElement("tr");
+    const photoCell = cell(row);
 
-    if(record.image) {
-      const image=document.createElement("img");
-      image.src="/images/"+encodeURIComponent(record.image);
-      image.className="photo";
-      image.alt=`Ảnh sự kiện ${record.id}`;
-      image.loading="lazy";
+    if (record.image) {
+      const image = document.createElement("img");
+      image.src = "/images/" + encodeURIComponent(record.image);
+      image.className = "photo";
+      image.alt = `Ảnh gốc sự kiện ${record.id}`;
+      image.loading = "lazy";
 
-      const button=action("","photo-button",()=>openImage(record));
-      button.setAttribute("aria-label",`Xem và đánh dấu ảnh sự kiện ${record.id}`);
+      const button = action(
+        "",
+        "photo-button",
+        () => openImage(record)
+      );
+
+      button.setAttribute(
+        "aria-label",
+        `Xem và đánh dấu ảnh sự kiện ${record.id}`
+      );
+
       button.append(image);
       photoCell.append(button);
-    } else photoCell.textContent="Không có ảnh";
+    } else {
+      photoCell.textContent = "Không có ảnh";
+    }
 
-    cell(row,new Date(record.time).toLocaleString("vi-VN",{
-      timeZone:"Asia/Ho_Chi_Minh"
-    }));
-    cell(row,record.kind);
-    cell(row,record.note);
+    cell(row, displayTime(record.time));
+    cell(row, record.kind);
+    cell(row, record.note);
 
-    const badge=document.createElement("span");
-    badge.className="status "+(
-      record.status==="Da xac nhan"?"confirmed":
-      record.status==="Nhan nham"?"mistake":"pending"
+    const badge = document.createElement("span");
+
+    badge.className = "status " + (
+      record.status === "Da xac nhan"
+        ? "confirmed"
+        : record.status === "Nhan nham"
+          ? "mistake"
+          : "pending"
     );
-    badge.textContent=labels[record.status]||record.status;
+
+    badge.textContent = labels[record.status] || record.status;
     cell(row).append(badge);
 
-    if(canEdit) {
-      const actions=document.createElement("div");
-      actions.className="actions";
-      actions.append(action("Sửa","secondary",()=>openEditor(record)));
+    if (canEdit) {
+      const actions = document.createElement("div");
+      actions.className = "actions";
 
-      if(record.status==="Cho kiem tra") {
-        actions.append(action("Xác nhận","secondary",()=>
-          changeStatus(record,"Da xac nhan")));
-        actions.append(action("Nhận nhầm","secondary",()=>
-          changeStatus(record,"Nhan nham")));
+      actions.append(
+        action("Sửa", "secondary", () => openEditor(record))
+      );
+
+      if (record.status === "Cho kiem tra") {
+        actions.append(
+          action("Xác nhận", "secondary", () =>
+            changeStatus(record, "Da xac nhan")
+          ),
+          action("Nhận nhầm", "secondary", () =>
+            changeStatus(record, "Nhan nham")
+          )
+        );
       }
 
-      actions.append(action("Xóa","danger",async()=>{
-        if(!confirm("Xóa bản ghi và ảnh này?")) return;
-        try {
-          await json("/api/delete",{id:record.id});
-          signature="";
-          await refresh();
-        } catch(error) {$("message").textContent=error.message;}
-      }));
+      actions.append(
+        action("Xóa", "danger", async () => {
+          if (!confirm("Xóa sự kiện, ảnh gốc và ảnh đánh dấu?")) {
+            return;
+          }
+
+          try {
+            await json("/api/delete", {id:record.id});
+            signature = "";
+            await refresh();
+          } catch (error) {
+            $("message").textContent = error.message;
+          }
+        })
+      );
 
       cell(row).append(actions);
     }
+
     $("events").append(row);
   }
 }
 
 function renderDays(days) {
   $("days").replaceChildren();
-  if(!days.length) {
-    $("days").textContent="Chưa có lịch sử.";
+
+  if (!days.length) {
+    $("days").textContent = "Chưa có lịch sử.";
     return;
   }
 
-  for(const item of days) {
-    const button=action(`${item.day} · ${item.count}`,"",()=>{
-      $("day").value=item.day;
-      signature="";
-      refresh();
-    });
-    if(item.day===$("day").value) button.classList.add("active");
+  for (const item of days) {
+    const button = action(
+      `${item.day} · ${item.count}`,
+      "",
+      () => {
+        $("day").value = item.day;
+        signature = "";
+        refresh();
+      }
+    );
+
+    if (item.day === $("day").value) {
+      button.classList.add("active");
+    }
+
     $("days").append(button);
   }
 }
 
 async function refresh() {
-  if(busy) return;
-  busy=true;
-  const day=$("day").value;
+  if (busy) {
+    refreshAgain = true;
+    return;
+  }
+
+  busy = true;
+  const day = $("day").value;
 
   try {
-    const [data,days]=await Promise.all([
-      json("/api/events?day="+encodeURIComponent(day)),
+    const [data, days] = await Promise.all([
+      json("/api/events?day=" + encodeURIComponent(day)),
       json("/api/days")
     ]);
 
-    if(day!==$("day").value) return;
-    if(!Array.isArray(data)||!Array.isArray(days))
-      throw new Error("API không đúng định dạng. Kiểm tra worker.mjs.");
+    if (day !== $("day").value) return;
 
-    const next=JSON.stringify({day,data,days});
-    if(signature!==next) {
-      records=data;
-      signature=next;
+    if (!Array.isArray(data) || !Array.isArray(days)) {
+      throw new Error("API không đúng định dạng.");
+    }
+
+    const next = JSON.stringify({day, data, days});
+
+    if (signature !== next) {
+      records = data;
+      signature = next;
       renderRecords();
       renderDays(days);
     }
 
-    $("connection").textContent="● Đã kết nối";
-    $("message").textContent="";
-  } catch(error) {
-    $("connection").textContent="● Mất kết nối";
-    $("message").textContent=error.message;
-  } finally {busy=false;}
+    $("connection").textContent = "● Đã kết nối";
+    $("connection").classList.remove("offline");
+    $("message").textContent = "";
+  } catch (error) {
+    $("connection").textContent = "● Mất kết nối";
+    $("connection").classList.add("offline");
+    $("message").textContent = error.message;
+  } finally {
+    busy = false;
+
+    if (refreshAgain) {
+      refreshAgain = false;
+      void refresh();
+    }
+  }
 }
 
 async function checkSession() {
-  if(checkingSession||authBusy) return;
-  checkingSession=true;
-  const version=sessionVersion;
+  if (checkingSession || authBusy) return;
+
+  checkingSession = true;
+  const version = sessionVersion;
 
   try {
-    const result=await json("/api/me");
-    if(version!==sessionVersion||authBusy) return;
-    isAdmin=result.admin===true;
-    if(!isAdmin) adminView=false;
+    const result = await json("/api/me");
+
+    if (version !== sessionVersion || authBusy) return;
+
+    isAdmin = result.admin === true;
+
+    if (!isAdmin) {
+      adminView = false;
+    }
+
     updateAdminUI();
-  } catch(_) {
-    if(version===sessionVersion&&isAdmin&&!authBusy) loseSession();
-  } finally {checkingSession=false;}
+  } catch (_) {
+    if (
+      version === sessionVersion &&
+      isAdmin &&
+      !authBusy
+    ) {
+      loseSession();
+    }
+  } finally {
+    checkingSession = false;
+  }
 }
 
-function openEditor(record=null) {
-  if(!isAdmin||!adminView) return;
-  editingId=record?record.id:null;
+function openEditor(record = null) {
+  if (!isAdmin || !adminView) return;
+
+  editingId = record ? record.id : null;
+
   $("eventForm").reset();
-  $("formMessage").textContent="";
-  $("editTitle").textContent=record?"Sửa sự kiện":"Thêm sự kiện";
-  $("eventTime").value=record?timeInputVN(record.time):"";
-  $("eventKind").value=record?record.kind:"Nghi không đội mũ";
-  $("eventNote").value=record?record.note:"";
-  $("eventStatus").value=record?record.status:"Cho kiem tra";
-  $("photoField").hidden=!!record;
-  $("editPhotoNote").hidden=!record;
+  $("formMessage").textContent = "";
+
+  $("editTitle").textContent =
+    record ? "Sửa sự kiện" : "Thêm sự kiện";
+
+  $("eventTime").value =
+    record ? timeInputVN(record.time) : "";
+
+  $("eventKind").value =
+    record ? record.kind : "Nghi không đội mũ";
+
+  $("eventNote").value = record ? record.note : "";
+  $("eventStatus").value =
+    record ? record.status : "Cho kiem tra";
+
+  $("photoField").hidden = !!record;
+  $("editPhotoNote").hidden = !record;
+
   $("editDialog").showModal();
 }
 
-$("loginOpen").onclick=()=>{
-  $("loginError").textContent="";
+$("loginOpen").onclick = () => {
+  $("loginError").textContent = "";
   $("loginDialog").showModal();
   $("password").focus();
 };
 
-$("loginClose").onclick=()=>$("loginDialog").close();
-$("editClose").onclick=()=>$("editDialog").close();
+$("loginClose").onclick = () => $("loginDialog").close();
+$("editClose").onclick = () => $("editDialog").close();
 
-$("loginForm").onsubmit=async event=>{
+$("loginForm").onsubmit = async event => {
   event.preventDefault();
-  authBusy=true;
+
+  authBusy = true;
   sessionVersion++;
-  $("loginSubmit").disabled=true;
-  $("loginError").textContent="";
+  $("loginSubmit").disabled = true;
+  $("loginError").textContent = "";
 
   try {
-    await json("/api/login",{password:$("password").value});
-    isAdmin=true;
-    adminView=true;
-    $("password").value="";
+    await json("/api/login", {
+      password:$("password").value
+    });
+
+    isAdmin = true;
+    adminView = true;
+
+    $("password").value = "";
     $("loginDialog").close();
+
     updateAdminUI();
     await refresh();
-  } catch(error) {
-    $("loginError").textContent=error.message;
+  } catch (error) {
+    $("loginError").textContent = error.message;
   } finally {
-    authBusy=false;
-    $("loginSubmit").disabled=false;
+    authBusy = false;
+    $("loginSubmit").disabled = false;
   }
 };
 
-$("logoutButton").onclick=async()=>{
-  authBusy=true;
+$("logoutButton").onclick = async () => {
+  if (savingMarks) {
+    $("message").textContent =
+      "Vui lòng chờ lưu ảnh xong rồi đăng xuất.";
+    return;
+  }
+
+  authBusy = true;
   sessionVersion++;
-  $("logoutButton").disabled=true;
+  $("logoutButton").disabled = true;
+
   try {
-    await json("/api/logout",{});
+    await json("/api/logout", {});
     loseSession();
-  } catch(error) {
-    $("message").textContent="Chưa đăng xuất được: "+error.message;
+  } catch (error) {
+    $("message").textContent =
+      "Chưa đăng xuất được: " + error.message;
   } finally {
-    authBusy=false;
-    $("logoutButton").disabled=false;
+    authBusy = false;
+    $("logoutButton").disabled = false;
   }
 };
 
-$("adminOpen").onclick=async()=>{
+$("adminOpen").onclick = async () => {
   await checkSession();
-  if(!isAdmin) {$("loginDialog").showModal();return;}
-  adminView=true;
+
+  if (!isAdmin) {
+    $("loginDialog").showModal();
+    return;
+  }
+
+  adminView = true;
   updateAdminUI();
 };
 
-$("publicOpen").onclick=()=>{
-  adminView=false;
+$("publicOpen").onclick = () => {
+  adminView = false;
   updateAdminUI();
 };
 
-$("addButton").onclick=()=>openEditor();
+$("addButton").onclick = () => openEditor();
 
-$("eventForm").onsubmit=async event=>{
+function readFileBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      resolve(String(reader.result).split(",")[1]);
+    };
+
+    reader.onerror = () => {
+      reject(new Error("Không đọc được ảnh."));
+    };
+
+    reader.readAsDataURL(file);
+  });
+}
+
+$("eventForm").onsubmit = async event => {
   event.preventDefault();
-  if(!isAdmin||!adminView) return;
-  $("saveButton").disabled=true;
-  $("formMessage").textContent="";
+
+  if (!isAdmin || !adminView) return;
+
+  $("saveButton").disabled = true;
+  $("formMessage").textContent = "";
 
   try {
-    const entered=$("eventTime").value;
-    const payload={
+    const entered = $("eventTime").value;
+
+    const payload = {
       kind:$("eventKind").value,
       note:$("eventNote").value,
       status:$("eventStatus").value,
-      time:entered?entered+(entered.length===16?":00+07:00":"+07:00"):undefined
+      time:entered
+        ? entered + (entered.length === 16 ? ":00+07:00" : "+07:00")
+        : undefined
     };
 
-    if(editingId!==null) {
-      payload.id=editingId;
-      await json("/api/update",payload);
+    if (editingId !== null) {
+      payload.id = editingId;
+      await json("/api/update", payload);
     } else {
-      const file=$("eventPhoto").files[0];
-      if(file) {
-        if(file.size>2000000) throw new Error("Ảnh tối đa 2 MB.");
-        if(file.type&&file.type!=="image/jpeg")
-          throw new Error("Vui lòng chọn ảnh JPEG.");
+      const file = $("eventPhoto").files[0];
 
-        payload.image=await new Promise((resolve,reject)=>{
-          const reader=new FileReader();
-          reader.onload=()=>resolve(String(reader.result).split(",")[1]);
-          reader.onerror=()=>reject(new Error("Không đọc được ảnh."));
-          reader.readAsDataURL(file);
-        });
+      if (file) {
+        if (file.size > 2000000) {
+          throw new Error("Ảnh tối đa 2 MB.");
+        }
+
+        if (file.type && file.type !== "image/jpeg") {
+          throw new Error("Vui lòng chọn ảnh JPEG.");
+        }
+
+        payload.image = await readFileBase64(file);
       }
-      await json("/api/events",payload);
+
+      await json("/api/events", payload);
     }
 
     $("editDialog").close();
-    signature="";
+    signature = "";
     await refresh();
-  } catch(error) {
-    $("formMessage").textContent=error.message;
-  } finally {$("saveButton").disabled=false;}
+  } catch (error) {
+    $("formMessage").textContent = error.message;
+  } finally {
+    $("saveButton").disabled = false;
+  }
 };
 
-$("todayButton").onclick=()=>{
-  $("day").value=todayVN();
-  signature="";
+$("todayButton").onclick = () => {
+  $("day").value = todayVN();
+  signature = "";
   refresh();
 };
 
-$("allButton").onclick=()=>{
-  $("day").value="";
-  signature="";
+$("allButton").onclick = () => {
+  $("day").value = "";
+  signature = "";
   refresh();
 };
 
-$("day").onchange=()=>{signature="";refresh();};
-$("search").oninput=renderRecords;
-$("statusFilter").onchange=renderRecords;
-
-$("exportButton").onclick=async()=>{
-  if(!isAdmin||!adminView) return;
-  try {
-    const response=await api("/api/export?day="+encodeURIComponent($("day").value));
-    downloadBlob(await response.blob(),"su-kien-"+($("day").value||"tat-ca")+".csv");
-  } catch(error) {$("message").textContent=error.message;}
+$("day").onchange = () => {
+  signature = "";
+  refresh();
 };
 
-function downloadBlob(blob,filename) {
-  const url=URL.createObjectURL(blob);
-  const link=document.createElement("a");
-  link.href=url;
-  link.download=filename;
+$("search").oninput = renderRecords;
+$("statusFilter").onchange = renderRecords;
+
+function downloadBlob(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = filename;
+
   document.body.append(link);
   link.click();
   link.remove();
-  setTimeout(()=>URL.revokeObjectURL(url),2000);
+
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
 }
 
-try {
-  if(localStorage.getItem("gate-theme")==="dark")
-    document.body.classList.add("dark");
-} catch(_) {}
+$("exportButton").onclick = async () => {
+  if (!isAdmin || !adminView) return;
 
-$("themeButton").onclick=()=>{
-  document.body.classList.toggle("dark");
   try {
-    localStorage.setItem("gate-theme",
-      document.body.classList.contains("dark")?"dark":"light");
-  } catch(_) {}
+    const response = await api(
+      "/api/export?day=" + encodeURIComponent($("day").value)
+    );
+
+    downloadBlob(
+      await response.blob(),
+      "su-kien-" + ($("day").value || "tat-ca") + ".csv"
+    );
+  } catch (error) {
+    $("message").textContent = error.message;
+  }
 };
 
-// ================= DANH DAU TREN ANH =================
+try {
+  if (localStorage.getItem("gate-theme") === "dark") {
+    document.body.classList.add("dark");
+  }
+} catch (_) {}
 
-const markCanvas=$("markCanvas");
-const markContext=markCanvas.getContext("2d");
-const sourceImage=$("sourceImage");
+$("themeButton").onclick = () => {
+  document.body.classList.toggle("dark");
 
-let marks=[], currentMark=null, pointerId=null;
-let selectedTool="pen", imageReady=false;
-let activeImageId=null, imageLoadVersion=0;
+  try {
+    localStorage.setItem(
+      "gate-theme",
+      document.body.classList.contains("dark") ? "dark" : "light"
+    );
+  } catch (_) {}
+};
+
+// ================= ĐÁNH DẤU ẢNH =================
 
 function markMessage(text) {
-  $("markNotice").textContent=text;
+  $("markNotice").textContent = text;
 }
 
 function setTool(tool) {
   finishMark();
-  selectedTool=tool;
-  document.querySelectorAll("[data-tool]").forEach(button=>{
-    button.setAttribute("aria-pressed",String(button.dataset.tool===tool));
+  selectedTool = tool;
+
+  document.querySelectorAll("[data-tool]").forEach(button => {
+    button.setAttribute(
+      "aria-pressed",
+      String(button.dataset.tool === tool)
+    );
   });
-  markCanvas.style.cursor=tool==="eraser"?"cell":"crosshair";
+
+  markCanvas.style.cursor =
+    tool === "eraser" ? "cell" : "crosshair";
 }
 
-function paintMark(ctx,mark) {
-  if(!mark.points.length) return;
+function paintMark(ctx, mark) {
+  if (!mark.points.length) return;
 
   ctx.save();
-  ctx.globalCompositeOperation=mark.tool==="eraser"
-    ?"destination-out":"source-over";
-  ctx.strokeStyle=mark.color;
-  ctx.fillStyle=mark.color;
-  ctx.lineWidth=mark.width;
-  ctx.lineCap="round";
-  ctx.lineJoin="round";
 
-  const first=mark.points[0];
-  const last=mark.points[mark.points.length-1];
+  ctx.globalCompositeOperation =
+    mark.tool === "eraser" ? "destination-out" : "source-over";
 
-  if(mark.tool==="pen"||mark.tool==="eraser") {
-    if(mark.points.length===1) {
+  ctx.strokeStyle = mark.color;
+  ctx.fillStyle = mark.color;
+  ctx.lineWidth = mark.width;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+
+  const first = mark.points[0];
+  const last = mark.points[mark.points.length - 1];
+
+  if (mark.tool === "pen" || mark.tool === "eraser") {
+    if (mark.points.length === 1) {
       ctx.beginPath();
-      ctx.arc(first.x,first.y,mark.width/2,0,Math.PI*2);
+      ctx.arc(first.x, first.y, mark.width / 2, 0, Math.PI * 2);
       ctx.fill();
     } else {
       ctx.beginPath();
-      ctx.moveTo(first.x,first.y);
-      for(const point of mark.points.slice(1))
-        ctx.lineTo(point.x,point.y);
+      ctx.moveTo(first.x, first.y);
+
+      for (const point of mark.points.slice(1)) {
+        ctx.lineTo(point.x, point.y);
+      }
+
       ctx.stroke();
     }
-  } else if(mark.tool==="rect") {
-    ctx.strokeRect(first.x,first.y,last.x-first.x,last.y-first.y);
-  } else if(mark.tool==="ellipse") {
-    ctx.beginPath();
-    ctx.ellipse(
-      (first.x+last.x)/2,
-      (first.y+last.y)/2,
-      Math.max(Math.abs(last.x-first.x)/2,.1),
-      Math.max(Math.abs(last.y-first.y)/2,.1),
-      0,0,Math.PI*2
+  } else if (mark.tool === "rect") {
+    ctx.strokeRect(
+      first.x,
+      first.y,
+      last.x - first.x,
+      last.y - first.y
     );
-    ctx.stroke();
-  } else if(mark.tool==="arrow") {
-    const angle=Math.atan2(last.y-first.y,last.x-first.x);
-    const distance=Math.hypot(last.x-first.x,last.y-first.y);
+  } else if (mark.tool === "ellipse") {
+    ctx.beginPath();
 
-    if(distance>0) {
-      const head=Math.min(distance*.5,Math.max(mark.width*4,12));
+    ctx.ellipse(
+      (first.x + last.x) / 2,
+      (first.y + last.y) / 2,
+      Math.max(Math.abs(last.x - first.x) / 2, .1),
+      Math.max(Math.abs(last.y - first.y) / 2, .1),
+      0,
+      0,
+      Math.PI * 2
+    );
+
+    ctx.stroke();
+  } else if (mark.tool === "arrow") {
+    const angle = Math.atan2(
+      last.y - first.y,
+      last.x - first.x
+    );
+
+    const distance = Math.hypot(
+      last.x - first.x,
+      last.y - first.y
+    );
+
+    if (distance > 0) {
+      const head = Math.min(
+        distance * .5,
+        Math.max(mark.width * 4, 12)
+      );
 
       ctx.beginPath();
-      ctx.moveTo(first.x,first.y);
-      ctx.lineTo(last.x,last.y);
+      ctx.moveTo(first.x, first.y);
+      ctx.lineTo(last.x, last.y);
+
       ctx.moveTo(
-        last.x-head*Math.cos(angle-Math.PI/6),
-        last.y-head*Math.sin(angle-Math.PI/6)
+        last.x - head * Math.cos(angle - Math.PI / 6),
+        last.y - head * Math.sin(angle - Math.PI / 6)
       );
-      ctx.lineTo(last.x,last.y);
+
+      ctx.lineTo(last.x, last.y);
+
       ctx.lineTo(
-        last.x-head*Math.cos(angle+Math.PI/6),
-        last.y-head*Math.sin(angle+Math.PI/6)
+        last.x - head * Math.cos(angle + Math.PI / 6),
+        last.y - head * Math.sin(angle + Math.PI / 6)
       );
+
       ctx.stroke();
     }
   }
@@ -1050,256 +1475,517 @@ function paintMark(ctx,mark) {
 }
 
 function redrawMarks() {
-  if(!markContext) return;
+  if (!markContext) return;
 
-  markContext.clearRect(0,0,markCanvas.width,markCanvas.height);
-  for(const mark of marks) paintMark(markContext,mark);
-  if(currentMark) paintMark(markContext,currentMark);
+  markContext.clearRect(
+    0,
+    0,
+    markCanvas.width,
+    markCanvas.height
+  );
 
-  $("markUndo").disabled=!marks.length&&!currentMark;
-  $("markClear").disabled=!marks.length&&!currentMark;
+  for (const mark of marks) {
+    paintMark(markContext, mark);
+  }
+
+  if (currentMark) {
+    paintMark(markContext, currentMark);
+  }
+
+  const hasMarks = marks.length > 0 || currentMark !== null;
+
+  $("markUndo").disabled = !hasMarks;
+  $("markClear").disabled = !hasMarks;
 }
 
 function markPoint(event) {
-  const rect=markCanvas.getBoundingClientRect();
+  const rect = markCanvas.getBoundingClientRect();
+
   return {
-    x:Math.max(0,Math.min(markCanvas.width,
-      (event.clientX-rect.left)*markCanvas.width/rect.width)),
-    y:Math.max(0,Math.min(markCanvas.height,
-      (event.clientY-rect.top)*markCanvas.height/rect.height))
+    x:Math.max(
+      0,
+      Math.min(
+        markCanvas.width,
+        (event.clientX - rect.left) * markCanvas.width / rect.width
+      )
+    ),
+    y:Math.max(
+      0,
+      Math.min(
+        markCanvas.height,
+        (event.clientY - rect.top) * markCanvas.height / rect.height
+      )
+    )
   };
 }
 
 function finishMark() {
-  if(!currentMark) return;
+  if (!currentMark) return;
 
   marks.push(currentMark);
-  currentMark=null;
+  currentMark = null;
 
-  const previous=pointerId;
-  pointerId=null;
+  const previous = pointerId;
+  pointerId = null;
 
-  if(previous!==null&&markCanvas.hasPointerCapture(previous))
+  if (
+    previous !== null &&
+    markCanvas.hasPointerCapture(previous)
+  ) {
     markCanvas.releasePointerCapture(previous);
+  }
 
   redrawMarks();
-  markMessage("Đã đánh dấu "+marks.length+" nét. Tải PNG để giữ ảnh.");
+
+  markMessage(
+    "Đã thêm " + marks.length +
+    " nét. Bạn có thể tải ảnh" +
+    (isAdmin ? " hoặc lưu lên web." : ".")
+  );
 }
 
 function fitImageStage() {
-  if(!imageReady) return;
-  const ratio=sourceImage.naturalWidth/sourceImage.naturalHeight;
-  const preferredWidth=Math.max(120,window.innerHeight*.62*ratio);
-  $("imageStage").style.width=Math.min(sourceImage.naturalWidth,preferredWidth)+"px";
+  if (!imageReady) return;
+
+  const ratio =
+    sourceImage.naturalWidth / sourceImage.naturalHeight;
+
+  const preferredWidth =
+    Math.max(120, window.innerHeight * .62 * ratio);
+
+  $("imageStage").style.width =
+    Math.min(sourceImage.naturalWidth, preferredWidth) + "px";
+}
+
+function hasUnkeptMarks() {
+  const current = JSON.stringify(marks);
+
+  return (
+    current !== savedMarksSignature &&
+    current !== downloadedMarksSignature
+  );
 }
 
 async function openImage(record) {
-  // Moi lan mo anh bat dau voi anh goc.
+  if (savingMarks) return;
+
   finishMark();
-  marks=[];
-  currentMark=null;
-  pointerId=null;
-  imageReady=false;
-  activeImageId=record.id;
 
-  const version=++imageLoadVersion;
-  $("markDownload").disabled=true;
+  if (
+    $("imageDialog").open &&
+    hasUnkeptMarks() &&
+    !confirm("Mở ảnh khác? Các nét chưa lưu hoặc tải sẽ mất.")
+  ) {
+    return;
+  }
+
+  marks = [];
+  currentMark = null;
+  pointerId = null;
+  imageReady = false;
+  activeImageId = record.id;
+
+  savedMarksSignature = "[]";
+  downloadedMarksSignature = "[]";
+
+  const version = ++imageLoadVersion;
+
   sourceImage.removeAttribute("src");
-  markCanvas.width=1;
-  markCanvas.height=1;
-  redrawMarks();
+  markCanvas.width = 1;
+  markCanvas.height = 1;
 
-  $("imageTitle").textContent="Ảnh sự kiện #"+record.id;
-  $("imageInfo").textContent=new Date(record.time).toLocaleString("vi-VN",{
-    timeZone:"Asia/Ho_Chi_Minh"
-  });
+  redrawMarks();
+  updateMarkSaveUI();
+
+  $("imageTitle").textContent = "Ảnh sự kiện #" + record.id;
+  $("imageInfo").textContent = displayTime(record.time);
 
   markMessage("Đang tải ảnh…");
-  if(!$("imageDialog").open) $("imageDialog").showModal();
+
+  if (!$("imageDialog").open) {
+    $("imageDialog").showModal();
+  }
 
   try {
-    if(!markContext) throw new Error("Trình duyệt không hỗ trợ công cụ vẽ.");
+    if (!markContext) {
+      throw new Error("Trình duyệt không hỗ trợ công cụ vẽ.");
+    }
 
-    const response=await fetch(
-      "/images/"+encodeURIComponent(record.image),
-      {cache:"no-store"}
+    let response = await fetch(
+      "/api/annotation?id=" + encodeURIComponent(record.id),
+      {
+        credentials:"same-origin",
+        cache:"no-store"
+      }
     );
 
-    if(!response.ok) throw new Error("Không tải được ảnh.");
+    const hasSavedImage = response.ok;
 
-    const blob=await response.blob();
-    const imageURL=URL.createObjectURL(blob);
-    const image=new Image();
+    if (response.status === 404) {
+      response = await fetch(
+        "/images/" + encodeURIComponent(record.image),
+        {cache:"no-store"}
+      );
+    }
+
+    if (!response.ok) {
+      throw new Error("Không tải được ảnh.");
+    }
+
+    const blob = await response.blob();
+    const imageURL = URL.createObjectURL(blob);
 
     try {
-      await new Promise((resolve,reject)=>{
-        image.onload=resolve;
-        image.onerror=()=>reject(new Error("Ảnh không hợp lệ."));
-        image.src=imageURL;
+      const image = new Image();
+
+      await new Promise((resolve, reject) => {
+        image.onload = resolve;
+        image.onerror = () => reject(
+          new Error("Ảnh không hợp lệ.")
+        );
+        image.src = imageURL;
       });
 
-      if(version!==imageLoadVersion||!$("imageDialog").open) return;
+      if (
+        version !== imageLoadVersion ||
+        !$("imageDialog").open
+      ) {
+        return;
+      }
 
-      // Blob cung nguon, co the xuat canvas thanh PNG.
-      sourceImage.src=imageURL;
+      sourceImage.src = imageURL;
       await sourceImage.decode();
 
-      if(version!==imageLoadVersion||!$("imageDialog").open) return;
+      if (
+        version !== imageLoadVersion ||
+        !$("imageDialog").open
+      ) {
+        return;
+      }
 
-      markCanvas.width=image.naturalWidth;
-      markCanvas.height=image.naturalHeight;
-      imageReady=true;
+      markCanvas.width = image.naturalWidth;
+      markCanvas.height = image.naturalHeight;
+      imageReady = true;
 
       fitImageStage();
       redrawMarks();
       setTool("pen");
+      updateMarkSaveUI();
 
-      $("markDownload").disabled=false;
-      markMessage("Chọn công cụ rồi kéo trên ảnh để đánh dấu.");
+      markMessage(
+        hasSavedImage
+          ? "Đang xem bản đánh dấu đã lưu. Bạn có thể vẽ thêm."
+          : "Chọn công cụ rồi kéo trên ảnh để đánh dấu."
+      );
     } finally {
       URL.revokeObjectURL(imageURL);
     }
-  } catch(error) {
-    if(version===imageLoadVersion) markMessage(error.message);
+  } catch (error) {
+    if (version === imageLoadVersion) {
+      imageReady = false;
+      updateMarkSaveUI();
+      markMessage(error.message);
+    }
   }
 }
 
-document.querySelectorAll("[data-tool]").forEach(button=>{
-  button.onclick=()=>setTool(button.dataset.tool);
+document.querySelectorAll("[data-tool]").forEach(button => {
+  button.onclick = () => setTool(button.dataset.tool);
 });
 
-$("markColor").oninput=()=>{
-  if(selectedTool==="eraser") setTool("pen");
+$("markColor").oninput = () => {
+  if (selectedTool === "eraser") setTool("pen");
 };
 
-markCanvas.addEventListener("pointerdown",event=>{
-  if(!imageReady||pointerId!==null||event.button!==0) return;
+markCanvas.addEventListener("pointerdown", event => {
+  if (
+    !imageReady ||
+    pointerId !== null ||
+    event.button !== 0
+  ) {
+    return;
+  }
 
   event.preventDefault();
-  pointerId=event.pointerId;
+
+  pointerId = event.pointerId;
   markCanvas.setPointerCapture(pointerId);
 
-  const rect=markCanvas.getBoundingClientRect();
+  const rect = markCanvas.getBoundingClientRect();
 
-  currentMark={
+  currentMark = {
     tool:selectedTool,
     color:$("markColor").value,
-    width:Number($("markSize").value)*markCanvas.width/rect.width,
+    width:Number($("markSize").value) *
+      markCanvas.width / rect.width,
     points:[markPoint(event)]
   };
 
   redrawMarks();
 });
 
-markCanvas.addEventListener("pointermove",event=>{
-  if(event.pointerId!==pointerId||!currentMark) return;
+markCanvas.addEventListener("pointermove", event => {
+  if (
+    event.pointerId !== pointerId ||
+    !currentMark
+  ) {
+    return;
+  }
+
   event.preventDefault();
 
-  if(selectedTool==="pen"||selectedTool==="eraser") {
-    const samples=event.getCoalescedEvents?event.getCoalescedEvents():[];
-    for(const sample of samples.length?samples:[event])
+  if (
+    currentMark.tool === "pen" ||
+    currentMark.tool === "eraser"
+  ) {
+    const samples = event.getCoalescedEvents
+      ? event.getCoalescedEvents()
+      : [];
+
+    for (const sample of samples.length ? samples : [event]) {
       currentMark.points.push(markPoint(sample));
+    }
   } else {
-    currentMark.points=[currentMark.points[0],markPoint(event)];
+    currentMark.points = [
+      currentMark.points[0],
+      markPoint(event)
+    ];
   }
 
   redrawMarks();
 });
 
-markCanvas.addEventListener("pointerup",event=>{
-  if(event.pointerId===pointerId) finishMark();
+markCanvas.addEventListener("pointerup", event => {
+  if (event.pointerId === pointerId) finishMark();
 });
 
-markCanvas.addEventListener("pointercancel",event=>{
-  if(event.pointerId===pointerId) finishMark();
+markCanvas.addEventListener("pointercancel", event => {
+  if (event.pointerId === pointerId) finishMark();
 });
 
-markCanvas.addEventListener("lostpointercapture",finishMark);
+markCanvas.addEventListener("lostpointercapture", finishMark);
 
-$("markUndo").onclick=()=>{
+$("markUndo").onclick = () => {
   finishMark();
   marks.pop();
   redrawMarks();
-  markMessage("Đã hoàn tác một nét.");
+  markMessage("Đã hoàn tác một nét mới.");
 };
 
-$("markClear").onclick=()=>{
+$("markClear").onclick = () => {
   finishMark();
-  if(!marks.length||!confirm("Xóa tất cả đánh dấu trên ảnh?")) return;
-  marks=[];
+
+  if (
+    !marks.length ||
+    !confirm("Xóa các nét mới vẽ trong lần mở này?")
+  ) {
+    return;
+  }
+
+  marks = [];
   redrawMarks();
-  markMessage("Đã xóa đánh dấu. Ảnh gốc được giữ nguyên.");
+  markMessage("Đã xóa các nét mới.");
 };
 
-$("markDownload").onclick=()=>{
-  if(!imageReady) return;
+function makeOutputCanvas() {
+  const output = document.createElement("canvas");
+
+  output.width = markCanvas.width;
+  output.height = markCanvas.height;
+
+  const ctx = output.getContext("2d");
+
+  if (!ctx) {
+    throw new Error("Không tạo được ảnh xuất.");
+  }
+
+  ctx.drawImage(
+    sourceImage,
+    0,
+    0,
+    output.width,
+    output.height
+  );
+
+  ctx.drawImage(markCanvas, 0, 0);
+
+  return output;
+}
+
+function canvasBlob(canvas) {
+  return new Promise((resolve, reject) => {
+    canvas.toBlob(blob => {
+      if (blob) {
+        resolve(blob);
+      } else {
+        reject(new Error("Không xuất được PNG."));
+      }
+    }, "image/png");
+  });
+}
+
+$("markDownload").onclick = async () => {
+  if (!imageReady) return;
+
   finishMark();
+
+  const version = imageLoadVersion;
+  const id = activeImageId;
+  const snapshot = JSON.stringify(marks);
 
   try {
-    const output=document.createElement("canvas");
-    output.width=markCanvas.width;
-    output.height=markCanvas.height;
-    const ctx=output.getContext("2d");
-    if(!ctx) throw new Error("Không tạo được ảnh xuất.");
+    const blob = await canvasBlob(makeOutputCanvas());
 
-    ctx.drawImage(sourceImage,0,0,output.width,output.height);
-    ctx.drawImage(markCanvas,0,0);
+    downloadBlob(
+      blob,
+      `su-kien-${id}-danh-dau.png`
+    );
 
-    output.toBlob(blob=>{
-      if(!blob) {
-        markMessage("Không xuất được PNG. Vui lòng thử lại.");
-        return;
+    if (version === imageLoadVersion) {
+      downloadedMarksSignature = snapshot;
+      markMessage("Đã tạo PNG để tải xuống.");
+    }
+  } catch (error) {
+    if (version === imageLoadVersion) {
+      markMessage(error.message);
+    }
+  }
+};
+
+$("markSaveWeb").onclick = async () => {
+  if (!isAdmin || !imageReady || savingMarks) return;
+
+  finishMark();
+
+  savingMarks = true;
+  updateMarkSaveUI();
+
+  const id = activeImageId;
+  const version = imageLoadVersion;
+  const snapshot = JSON.stringify(marks);
+
+  markMessage("Đang lưu ảnh lên website…");
+
+  try {
+    const blob = await canvasBlob(makeOutputCanvas());
+
+    if (blob.size > 8000000) {
+      throw new Error("Ảnh vượt quá 8 MB.");
+    }
+
+    const response = await fetch(
+      "/api/annotation?id=" + encodeURIComponent(id),
+      {
+        method:"POST",
+        credentials:"same-origin",
+        headers:{"Content-Type":"image/png"},
+        body:blob
       }
-      downloadBlob(blob,`su-kien-${activeImageId}-danh-dau.png`);
-      markMessage("Đã tạo PNG để tải xuống. Ảnh gốc không thay đổi.");
-    },"image/png");
-  } catch(error) {
-    markMessage("Không xuất được ảnh: "+error.message);
+    );
+
+    if (response.status === 401) {
+      loseSession();
+    }
+
+    if (!response.ok) {
+      let detail = {};
+
+      try {
+        detail = await response.json();
+      } catch (_) {}
+
+      throw new Error(
+        detail.error || "Không lưu được ảnh lên website."
+      );
+    }
+
+    if (version === imageLoadVersion) {
+      savedMarksSignature = snapshot;
+
+      markMessage(
+        "Đã lưu ảnh đánh dấu lên website. Ảnh gốc được giữ riêng."
+      );
+    }
+  } catch (error) {
+    if (version === imageLoadVersion) {
+      markMessage(error.message);
+    }
+  } finally {
+    savingMarks = false;
+    updateMarkSaveUI();
   }
 };
 
 function closeImage() {
+  if (savingMarks) {
+    markMessage("Đang lưu ảnh, vui lòng chờ.");
+    return;
+  }
+
   finishMark();
-  if(marks.length&&!confirm("Đóng ảnh? Các đánh dấu chưa tải xuống sẽ mất.")) return;
+
+  if (
+    hasUnkeptMarks() &&
+    !confirm("Đóng ảnh? Các nét chưa lưu hoặc tải xuống sẽ mất.")
+  ) {
+    return;
+  }
+
   $("imageDialog").close();
 }
 
-$("imageClose").onclick=closeImage;
+$("imageClose").onclick = closeImage;
 
-$("imageDialog").addEventListener("cancel",event=>{
+$("imageDialog").addEventListener("cancel", event => {
   event.preventDefault();
   closeImage();
 });
 
-$("imageDialog").addEventListener("close",()=>{
+$("imageDialog").addEventListener("close", () => {
   imageLoadVersion++;
-  imageReady=false;
-  currentMark=null;
-  pointerId=null;
-  marks=[];
+  imageReady = false;
+
+  const previous = pointerId;
+
+  pointerId = null;
+  currentMark = null;
+
+  if (
+    previous !== null &&
+    markCanvas.hasPointerCapture(previous)
+  ) {
+    markCanvas.releasePointerCapture(previous);
+  }
+
+  marks = [];
+  activeImageId = null;
+
   sourceImage.removeAttribute("src");
-  markCanvas.width=1;
-  markCanvas.height=1;
+  markCanvas.width = 1;
+  markCanvas.height = 1;
+
   redrawMarks();
+  updateMarkSaveUI();
 });
 
-window.addEventListener("resize",fitImageStage);
+window.addEventListener("resize", fitImageStage);
 
-// Khoi dong
+// ================= KHỞI ĐỘNG =================
+
 updateAdminUI();
 refresh();
 checkSession();
 
-setInterval(()=>{
-  if(!document.hidden) refresh();
-},2000);
+setInterval(() => {
+  if (!document.hidden) refresh();
+}, 2000);
 
-setInterval(()=>{
-  if(!document.hidden&&isAdmin) checkSession();
-},30000);
+setInterval(() => {
+  if (!document.hidden && isAdmin) checkSession();
+}, 30000);
 
-document.addEventListener("visibilitychange",()=>{
-  if(!document.hidden) {
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) {
     refresh();
     checkSession();
   }
